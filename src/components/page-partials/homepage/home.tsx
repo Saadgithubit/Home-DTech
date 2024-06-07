@@ -1,9 +1,7 @@
-import Image from "next/image";
-import Navbar from "../ui-components/navbar/navbar";
-import Slidebar from "../ui-components/slidebar/slidebar";
+import Slidenavbar from "../ui-components/slidenavbar/slidenavbar";
 
 export default function Homepage(){
     return(
-        <Slidebar/>
+        <Slidenavbar/>
     )
 }
