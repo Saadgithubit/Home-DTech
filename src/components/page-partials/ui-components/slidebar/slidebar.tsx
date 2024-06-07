@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react';
+import Image from 'next/image';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -18,10 +19,16 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
-import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
+import dashboardIcon from '../../../../Images/icons/dashboard.png';
+import userIcon from '../../../../Images/icons/users.png';
+import buildingIcon from '../../../../Images/icons/building.png';
+import roomIcon from '../../../../Images/icons/room.png';
+import componentIcon from '../../../../Images/icons/component.png';
+import bookingIcon from '../../../../Images/icons/booking.png';
+import dkDataEngineerIcon from '../../../../Images/icons/dk_data-engr.png';
+import dkProductIcon from '../../../../Images/icons/dk_product.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTicket, faFolderOpen } from '@fortawesome/free-solid-svg-icons'
 
 const drawerWidth = 240;
 
@@ -91,11 +98,19 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       ...closedMixin(theme),
       '& .MuiDrawer-paper': closedMixin(theme),
     }),
+    '& .MuiDrawer-paper': {
+      backgroundColor: '#343A40',
+      color: 'white',
+    },
   }),
 );
 
+
 export default function MiniDrawer() {
   const theme = useTheme();
+  console.log(theme);
+  
+  
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -109,7 +124,7 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#FFFFFF' , color: 'black'}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -128,73 +143,244 @@ export default function MiniDrawer() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-            <div className='flex justify-center items-center text-left p-4'>
-                <img className='w-8' alt='logo' src='http://127.0.0.1:8000/images/leakdtech-logo.png'/>
-                <p>Home Dtech</p>
-            </div>
+      <Drawer
+      variant="permanent"
+      open={open}
+      onMouseOver={(handleDrawerOpen)}
+      onMouseOut={handleDrawerClose} >
+        <DrawerHeader >
+          <div className='flex justify-center items-center text-left p-4'>
+            <img className='w-8' alt='logo' src='http://127.0.0.1:8000/images/leakdtech-logo.png' />
+            <p>Home Dtech</p>
+          </div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
-          <div className='block'>
-        <p>Areeb</p>
-        </div>
         </DrawerHeader>
         <Divider />
         <List>
-          {['Dashboard', 'Users Management', 'fff', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <ConnectedTvIcon /> : <PeopleAltRoundedIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+
+        <ListItemText primary='Areeb Vohra' sx={{ opacity: open ? 1 : 0 , marginLeft: 3}} />
+        
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {/* 1 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <Image
+               src={dashboardIcon} 
+               width={20}/>
+            </ListItemIcon>
+            <ListItemText primary='Dashboard' sx={{ opacity: open ? 1 : 0 ,}} />
+          </ListItemButton>
+          {/* 2 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <Image 
+              src={userIcon} 
+              width={20}/>
+            </ListItemIcon>
+            <ListItemText primary='User Management' sx={{ opacity: open ? 1 : 0 }} />
+            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }}/>
+          </ListItemButton>
+          {/* 3 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <Image 
+              src={buildingIcon}
+              width={20} />
+            </ListItemIcon>
+            <ListItemText primary='Buildings' sx={{ opacity: open ? 1 : 0 }} />
+          </ListItemButton>
+          {/* 4 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <Image 
+              src={roomIcon}
+              width={20} />
+            </ListItemIcon>
+            <ListItemText primary='Rooms' sx={{ opacity: open ? 1 : 0 }} />
+            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }}/>
+          </ListItemButton>
+          {/* 5 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <Image 
+              src={componentIcon}
+              width={20} />
+            </ListItemIcon>
+            <ListItemText primary='Components' sx={{ opacity: open ? 1 : 0 }} />
+          </ListItemButton>
+          {/* 6 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <Image 
+              src={bookingIcon}
+              width={20} />
+            </ListItemIcon>
+            <ListItemText primary='Booking' sx={{ opacity: open ? 1 : 0 }} />
+          </ListItemButton>
+          {/* 7 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <Image 
+              src={dkDataEngineerIcon}
+              width={20} />
+            </ListItemIcon>
+            <ListItemText primary='Engineer`s Data Entry' sx={{ opacity: open ? 1 : 0 }} />
+            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }}/>
+          </ListItemButton>
+          {/* 8 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <Image 
+              src={dkProductIcon}
+              width={20} />
+            </ListItemIcon>
+            <ListItemText primary='Master Product' sx={{ opacity: open ? 1 : 0 }} />
+            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }}/>
+          </ListItemButton>
+          {/* 9 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <FontAwesomeIcon icon={faTicket} />
+            </ListItemIcon>
+            <ListItemText primary='Tickets' sx={{ opacity: open ? 1 : 0 , font: 2}} />
+            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }}/>
+          </ListItemButton>
+          {/* 10 */}
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <FontAwesomeIcon icon={faFolderOpen} />
+            </ListItemIcon>
+            <ListItemText primary='File Manager' sx={{ opacity: open ? 1 : 0 }} />
+          </ListItemButton>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-       
+
       </Box>
     </Box>
   );
