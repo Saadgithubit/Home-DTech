@@ -1,10 +1,10 @@
 import Homebar from "../ui-components/homebar/homebar";
-import Slidenavbar from "../ui-components/slidenavbar/slidenavbar";
+import Sidebar from "../ui-components/sidebar";
 
 export default function Homepage(){
     return(
         <main>
-        <Slidenavbar/>
+        <Sidebar/>
         <Homebar/>
         </main>
     )

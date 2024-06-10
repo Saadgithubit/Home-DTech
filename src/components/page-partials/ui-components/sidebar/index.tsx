@@ -112,7 +112,7 @@ const drawerStyling = {
 //   color: 'white',
 // },
 
-export default function Slidenavbar() {
+export default function Sidebar() {
   const theme = useTheme();
   console.log(theme);
 
