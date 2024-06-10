@@ -133,7 +133,7 @@ let appBarWidth;
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} 
-      sx={{ backgroundColor: '#FFFFFF', color: 'black', width: '82.5%' }}>
+      sx={{ backgroundColor: '#FFFFFF', color: 'black', width: '82.5%' , border: 'none' }}>
         <Toolbar sx={{ display: 'flex' , justifyContent: 'space-between' , }}>
           <IconButton
             color="inherit"
@@ -147,7 +147,7 @@ let appBarWidth;
           >
             <MenuIcon />
           </IconButton>
-          <select className='w-72 h-12 border-2'>
+          <select className='w-1/2 h-12 border-2'>
             <option value='Select'>Select</option>
           </select>
           <Typography variant="h6" noWrap component="div" sx={{ textJustify: 'end'}}>
