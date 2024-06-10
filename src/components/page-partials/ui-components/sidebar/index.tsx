@@ -102,7 +102,19 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
   }),
 );
+const drawerData = [
+  { name: 'Dashboard', src: dashboardIcon, alt: 'dashboardIcon' ,leftIcon: false},
+  { name: 'UserManagement', src: userIcon, alt: 'userIcon' ,leftIcon: true},
+  { name: 'Building', src: buildingIcon, alt: 'buildingIcon' ,leftIcon: false},
+  { name: 'Rooms', src: roomIcon, alt: 'roomIcon' ,leftIcon: true},
+  { name: 'Components', src: componentIcon, alt: 'componentIcon' ,leftIcon: false},
+  { name: 'Booking', src: bookingIcon, alt: 'bookingIcon' ,leftIcon: false},
+  { name: 'Engineer`s Data Entry', src: dkDataEngineerIcon, alt: 'dkDataEngineerIcon' ,leftIcon: true},
+  { name: 'Master Product', src: dkProductIcon, alt: 'dkProductIcon' ,leftIcon: true},
+  { name: 'Tickets', font: faTicket, alt: 'faTicket' ,leftIcon: true},
+  { name: 'File Manager', font: faFolderOpen, alt: 'faFolderOpen' },
 
+]
 const drawerStyling = {
   backgroundColor: '#343A40',
   color: 'white',
@@ -114,7 +126,6 @@ const drawerStyling = {
 
 export default function Sidebar() {
   const theme = useTheme();
-  console.log(theme);
 
 
   const [open, setOpen] = React.useState(false);
@@ -128,20 +139,19 @@ export default function Sidebar() {
     setOpen(false);
     appBarWidth = '80%'
   };
-let appBarWidth;
+  let appBarWidth;
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} 
-      sx={{ backgroundColor: '#FFFFFF', color: 'black', width: '82.5%' , border: 'none' }}>
-        <Toolbar sx={{ display: 'flex' , justifyContent: 'space-between' , }}>
+      <AppBar position="fixed" open={open}
+        sx={{ backgroundColor: '#FFFFFF', color: 'black', border: 'none' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
-              marginLeft: 8,
               ...(open && { display: 'none' }),
             }}
           >
@@ -150,7 +160,7 @@ let appBarWidth;
           <select className='w-1/2 h-12 border-2'>
             <option value='Select'>Select</option>
           </select>
-          <Typography variant="h6" noWrap component="div" sx={{ textJustify: 'end'}}>
+          <Typography variant="h6" noWrap component="div" sx={{ textJustify: 'end' }}>
             Areeb Vohra
           </Typography>
         </Toolbar>
@@ -164,15 +174,14 @@ let appBarWidth;
           }
         }}
         open={open}
-        onMouseOver={(handleDrawerOpen)}
-        onMouseOut={handleDrawerClose} >
+      >
         <DrawerHeader >
-            <Image className='w-8 mr-auto' alt='logo' src={logo} />
+          <Image className='w-8 mr-auto' alt='logo' src={logo} />
           <div className='flex justify-center items-center text-left p-4 mr-4'>
-            <p style={{opacity: open ? 1 : 0}}>Home Dtech</p>
+            <p style={{ opacity: open ? 1 : 0 }}>Home Dtech</p>
           </div>
           <IconButton onClick={handleDrawerClose}>
-          {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon sx={{opacity: open ? 1 : 0 , color: 'white'}}/>}
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} />}
           </IconButton>
         </DrawerHeader>
         <Divider />
@@ -183,256 +192,38 @@ let appBarWidth;
         </List>
         <Divider />
         <List>
-          {/* 1 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
+          {drawerData.map((data) => {
+            const {name , src , alt, font, leftIcon} = data
+            return (
+              <ListItemButton
               sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 1,
               }}
             >
-              <Image
-                src={dashboardIcon}
-                width={20}
-                alt='dashboardIcon' />
-            </ListItemIcon>
-            <ListItemText
-              primary='Dashboard'
-              sx={{ opacity: open ? 1 : 0, }}
-              primaryTypographyProps={{ fontSize: '13px' }} />
-          </ListItemButton>
-          {/* 2 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-                src={userIcon}
-                width={20}
-                alt='userIcon' />
-            </ListItemIcon>
-            <ListItemText
-              primary='User Management'
-              sx={{ opacity: open ? 1 : 0 }}
-              primaryTypographyProps={{ fontSize: '13px' }} />
-            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-          {/* 3 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-                src={buildingIcon}
-                width={20}
-                alt='buildingIcon' />
-            </ListItemIcon>
-            <ListItemText 
-            primary='Buildings' 
-            sx={{ opacity: open ? 1 : 0 }}
-            primaryTypographyProps={{fontSize: '13px'}} />
-          </ListItemButton>
-          {/* 4 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-                src={roomIcon}
-                width={20}
-                alt='roomIcon' />
-            </ListItemIcon>
-            <ListItemText 
-            primary='Rooms' 
-            sx={{ opacity: open ? 1 : 0 }}
-            primaryTypographyProps={{fontSize: '13px'}} />
-            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-          {/* 5 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-                src={componentIcon}
-                width={20}
-                alt='componentIcon' />
-            </ListItemIcon>
-            <ListItemText 
-            primary='Components' 
-            sx={{ opacity: open ? 1 : 0 }}
-            primaryTypographyProps={{fontSize: '13px'}} />
-          </ListItemButton>
-          {/* 6 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-                src={bookingIcon}
-                width={20}
-                alt='bookingIcon' />
-            </ListItemIcon>
-            <ListItemText 
-            primary='Booking' 
-            sx={{ opacity: open ? 1 : 0 }}
-            primaryTypographyProps={{fontSize: '13px'}} />
-          </ListItemButton>
-          {/* 7 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-              style={{color: 'white'}}
-                src={dkDataEngineerIcon}
-                width={20}
-                alt='dkDataEngineerIcon' />
-            </ListItemIcon>
-            <ListItemText
-              primary='Engineer`s Data Entry'
-              sx={{ opacity: open ? 1 : 0 }}
-              primaryTypographyProps={{ fontSize: '13px' }} />
-            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-          {/* 8 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <Image
-                src={dkProductIcon}
-                width={20}
-                alt='dkProductIcon' />
-            </ListItemIcon>
-            <ListItemText 
-            primary='Master Product' 
-            sx={{ opacity: open ? 1 : 0 }}
-            primaryTypographyProps={{fontSize: '13px'}} />
-            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-          {/* 9 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <FontAwesomeIcon className='text-gray-500' icon={faTicket} />
-            </ListItemIcon>
-            <ListItemText 
-            primary='Tickets' 
-            sx={{ opacity: open ? 1 : 0, font: 2 }}
-            primaryTypographyProps={{fontSize: '13px'}} />
-            <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-          {/* 10 */}
-          <ListItemButton
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 1,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 1 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              <FontAwesomeIcon className='text-gray-500' icon={faFolderOpen} />
-            </ListItemIcon>
-            <ListItemText 
-            primary='File Manager' 
-            sx={{ opacity: open ? 1 : 0 }}
-            primaryTypographyProps={{fontSize: '13px'}} />
-          </ListItemButton>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 1 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                {src &&<Image
+                  src={src}
+                  width={20}
+                  alt={alt} />}
+              {font && <FontAwesomeIcon className='text-gray-500' icon={faFolderOpen} />}
+              </ListItemIcon>
+              <ListItemText
+                primary={name}
+                sx={{ opacity: open ? 1 : 0 }}
+                primaryTypographyProps={{ fontSize: '13px' }} />
+              {leftIcon &&<ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />}
+            </ListItemButton>
+            )
+          })}
+         
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
