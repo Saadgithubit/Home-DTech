@@ -198,14 +198,14 @@ export default function Sidebar() {
               <ListItemButton
               sx={{
                 minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 1,
+                display: 'flex',
               }}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 0,
                   mr: open ? 1 : 'auto',
+                  textAlign: 'center',
                   justifyContent: 'center',
                 }}
               >
@@ -213,7 +213,7 @@ export default function Sidebar() {
                   src={src}
                   width={20}
                   alt={alt} />}
-              {font && <FontAwesomeIcon className='text-gray-500' icon={faFolderOpen} />}
+              {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
               </ListItemIcon>
               <ListItemText
                 primary={name}
