@@ -12,11 +12,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItem from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import dashboardIcon from '../../../Images/icons/dashboard.png';
 import userIcon from '../../../Images/icons/users.png';
@@ -104,15 +106,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 const drawerData = [
-  { name: 'Dashboard', src: dashboardIcon, alt: 'dashboardIcon' ,leftIcon: false},
-  { name: 'UserManagement', src: userIcon, alt: 'userIcon' ,leftIcon: true},
-  { name: 'Building', src: buildingIcon, alt: 'buildingIcon' ,leftIcon: false},
-  { name: 'Rooms', src: roomIcon, alt: 'roomIcon' ,leftIcon: true},
-  { name: 'Components', src: componentIcon, alt: 'componentIcon' ,leftIcon: false},
-  { name: 'Booking', src: bookingIcon, alt: 'bookingIcon' ,leftIcon: false},
-  { name: 'Engineer`s Data Entry', src: dkDataEngineerIcon, alt: 'dkDataEngineerIcon' ,leftIcon: true},
-  { name: 'Master Product', src: dkProductIcon, alt: 'dkProductIcon' ,leftIcon: true},
-  { name: 'Tickets', font: faTicket, alt: 'faTicket' ,leftIcon: true},
+  { name: 'Dashboard', src: dashboardIcon, alt: 'dashboardIcon', leftIcon: false },
+  { name: 'UserManagement', src: userIcon, alt: 'userIcon', leftIcon: true },
+  { name: 'Building', src: buildingIcon, alt: 'buildingIcon', leftIcon: false },
+  { name: 'Rooms', src: roomIcon, alt: 'roomIcon', leftIcon: true },
+  { name: 'Components', src: componentIcon, alt: 'componentIcon', leftIcon: false },
+  { name: 'Booking', src: bookingIcon, alt: 'bookingIcon', leftIcon: false },
+  { name: 'Engineer`s Data Entry', src: dkDataEngineerIcon, alt: 'dkDataEngineerIcon', leftIcon: true },
+  { name: 'Master Product', src: dkProductIcon, alt: 'dkProductIcon', leftIcon: true },
+  { name: 'Tickets', font: faTicket, alt: 'faTicket', leftIcon: true },
   { name: 'File Manager', font: faFolderOpen, alt: 'faFolderOpen' },
 
 ]
@@ -125,7 +127,8 @@ export default function Sidebar() {
   const theme = useTheme();
 
   const [open, setOpen] = React.useState(false);
-  const [ExpandIcon , setExpandIcon] = React.useState(false)
+  const [ExpandIcon, setExpandIcon] = React.useState(false)
+  const [isCollapse, setisCollapse] = React.useState(false)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -136,8 +139,12 @@ export default function Sidebar() {
     setOpen(false);
     appBarWidth = '80%'
   };
-  console.log('expand --> ', ExpandIcon);
-  
+
+  const handleCollapse = () => {
+    setisCollapse(!isCollapse)
+    setExpandIcon(!ExpandIcon)
+  };
+
   let appBarWidth;
   return (
     <Box sx={{ display: 'flex' }}>
@@ -148,7 +155,7 @@ export default function Sidebar() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={open? handleDrawerClose :handleDrawerOpen}
+            onClick={open ? handleDrawerClose : handleDrawerOpen}
             edge="start"
           >
             <MenuIcon />
@@ -175,7 +182,7 @@ export default function Sidebar() {
           <Image className='w-8 mr-auto' alt='logo' src={logo} />
           <div className='flex justify-center items-center text-left p-4 mr-4'>
             <Link href='/'>
-            <p className='mr-10' style={{ opacity: open ? 1 : 0 }}>Home Dtech</p>
+              <p className='mr-10' style={{ opacity: open ? 1 : 0 }}>Home Dtech</p>
             </Link>
           </div>
         </DrawerHeader>
@@ -187,40 +194,101 @@ export default function Sidebar() {
         </List>
         <Divider />
         <List>
-          {drawerData.map((data) => {
-            const {name , src , alt, font, leftIcon} = data
+          {drawerData.map((data, index) => {
+            const { name, src, alt, font, leftIcon } = data
             return (
-              <ListItemButton
-              sx={{
-                minHeight: 48,
-                display: 'flex',
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 1 : 'auto',
-                  textAlign: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {src &&<Image
-                  src={src}
-                  width={20}
-                  alt={alt} />}
-              {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
-              </ListItemIcon>
-              <Link href={name.toLowerCase()}>
-              <ListItemText
-                primary={name}
-                sx={{ opacity: open ? 1 : 0 }}
-                primaryTypographyProps={{ fontSize: '13px' }} />
-                </Link>
-              <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
+              <ListItem key={index} sx={{ display: 'block' }}>
+                {!leftIcon? 
+                  <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    display: 'flex',
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 1 : 'auto',
+                      textAlign: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    {src && <Image
+                      src={src}
+                      width={20}
+                      alt={alt} />}
+                    {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
+                  </ListItemIcon>
+                  <Link href={name.toLowerCase()}>
+                    <ListItemText
+                      primary={name}
+                      sx={{ opacity: open ? 1 : 0, color: 'white' }}
+                      primaryTypographyProps={{ fontSize: '13px' }} />
+                  </Link> 
+                 
+                </ListItemButton>:
+                 <ListItemButton
+                 onClick={handleCollapse}
+                 sx={{
+                   minHeight: 48,
+                   display: 'flex',
+                 }}
+               >
+                 <ListItemIcon
+                   sx={{
+                     minWidth: 0,
+                     mr: open ? 1 : 'auto',
+                     textAlign: 'center',
+                     justifyContent: 'center',
+                   }}
+                 >
+                   {src && <Image
+                     src={src}
+                     width={20}
+                     alt={alt} />}
+                   {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
+                 </ListItemIcon>
+                   <ListItemText
+                     primary={name}
+                     sx={{ opacity: open ? 1 : 0, color: 'white' }}
+                     primaryTypographyProps={{ fontSize: '13px' }} />
+                      {leftIcon &&
+                    <span>{!ExpandIcon ? <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> : <ExpandMoreIcon sx={{color: 'white' }}/>}
+                    </span>}
+               </ListItemButton>
+                }
+                
+                <Collapse in={isCollapse} timeout='auto' unmountOnExit>
+                  {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem key={text} sx={{ display: 'block' }}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? 'initial' : 'center',
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : 'auto',
+                            justifyContent: 'center',
+                          }}
+                        >
+                        </ListItemIcon>
+                        <ListItemText primary={text}
+                          sx={{ opacity: open ? 1 : 0, color: 'white' }}
+                          primaryTypographyProps={{ fontSize: '13px' }} />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </Collapse>
+              </ListItem>
             )
           })}
+
         </List>
+
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
