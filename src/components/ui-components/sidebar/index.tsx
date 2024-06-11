@@ -8,6 +8,7 @@ import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
@@ -83,6 +84,8 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
+console.log(openedMixin);
+console.log(closedMixin);
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -98,7 +101,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       ...closedMixin(theme),
       '& .MuiDrawer-paper': closedMixin(theme),
     }),
-
   }),
 );
 const drawerData = [
@@ -118,16 +120,12 @@ const drawerStyling = {
   backgroundColor: '#343A40',
   color: 'white',
 }
-// '& .MuiDrawer-paper': {
-//   backgroundColor: '#343A40',
-//   color: 'white',
-// },
 
 export default function Sidebar() {
   const theme = useTheme();
 
-
   const [open, setOpen] = React.useState(false);
+  const [ExpandIcon , setExpandIcon] = React.useState(false)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -138,6 +136,8 @@ export default function Sidebar() {
     setOpen(false);
     appBarWidth = '80%'
   };
+  console.log('expand --> ', ExpandIcon);
+  
   let appBarWidth;
   return (
     <Box sx={{ display: 'flex' }}>
@@ -210,17 +210,16 @@ export default function Sidebar() {
                   alt={alt} />}
               {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
               </ListItemIcon>
-              <Link href={name}>
+              <Link href={name.toLowerCase()}>
               <ListItemText
                 primary={name}
                 sx={{ opacity: open ? 1 : 0 }}
                 primaryTypographyProps={{ fontSize: '13px' }} />
                 </Link>
-              {leftIcon &&<ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />}
+              <ChevronLeftIcon sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
             )
           })}
-         
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
