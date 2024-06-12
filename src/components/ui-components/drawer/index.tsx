@@ -1,7 +1,13 @@
 import { styled, Theme, CSSObject } from '@mui/material/styles';
 import { Drawer as MuiDrawer, } from '@mui/material';
 
+import {
+    faTicket, faFolderOpen, faDesktop, faUsers, faCity, faCalendarDays, faSnowflake, faHouseLaptop,
+    faHandHoldingDroplet, faPersonShelter
+} from '@fortawesome/free-solid-svg-icons';
+
 const drawerWidth = 240;
+
 
 export const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -11,6 +17,23 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
+export const drawerStyling = {
+    backgroundColor: '#343A40',
+    color: 'white',
+};
+
+export const drawerData = [
+    { name: 'Dashboard', font: faDesktop, alt: 'dashboardIcon', leftIcon: false },
+    { name: 'UserManagement', font: faUsers, alt: 'userIcon', leftIcon: true },
+    { name: 'Building', font: faCity, alt: 'buildingIcon', leftIcon: false },
+    { name: 'Rooms', font: faPersonShelter, alt: 'roomIcon', leftIcon: true },
+    { name: 'Components', font: faSnowflake, alt: 'componentIcon', leftIcon: false },
+    { name: 'Booking', font: faCalendarDays, alt: 'bookingIcon', leftIcon: false },
+    { name: 'Engineer`s Data Entry', font: faHouseLaptop, alt: 'dkDataEngineerIcon', leftIcon: true },
+    { name: 'Master Product', font: faHandHoldingDroplet, alt: 'dkProductIcon', leftIcon: true },
+    { name: 'Tickets', font: faTicket, alt: 'faTicket', leftIcon: true },
+    { name: 'File Manager', font: faFolderOpen, alt: 'faFolderOpen', leftIcon: false },
+];
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
