@@ -1,6 +1,4 @@
 import Dashboardpage from "@/components/page-partials/dashboardpage";
-import Footer from "@/components/ui-components/footer";
-import Sidebar from "@/components/ui-components/sidebar";
 
 export default function Dashboard() {
     return (

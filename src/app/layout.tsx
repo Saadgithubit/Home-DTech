@@ -18,11 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={{backgroundColor: '#F4F6F9'}} className={inter.className}>
-      <Sidebar/>
+      <body style={{ backgroundColor: '#F4F6F9' }} className={inter.className}>
+        <Sidebar />
         {children}
-      <Footer/>
-        </body>
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -128,8 +128,11 @@ export default function Sidebar() {
 
   const [open, setOpen] = React.useState(false);
   const [ExpandIcon, setExpandIcon] = React.useState(false)
-  const [isCollapse, setisCollapse] = React.useState(false)
+  const [collapseIndex, setCollapseIndex] = React.useState<number | null>(null);
 
+  // export function navbar(data){
+  //   return data = open
+  // }
   const handleDrawerOpen = () => {
     setOpen(true);
     appBarWidth = '70%'
@@ -140,8 +143,8 @@ export default function Sidebar() {
     appBarWidth = '80%'
   };
 
-  const handleCollapse = () => {
-    setisCollapse(!isCollapse)
+  const handleCollapse = (index: number) => {
+    setCollapseIndex(collapseIndex === index ? null : index);
     setExpandIcon(!ExpandIcon)
   };
 
@@ -150,8 +153,8 @@ export default function Sidebar() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}
-        sx={{ backgroundColor: '#FFFFFF', color: 'black', border: 'none' }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', }}>
+        sx={{ backgroundColor: '#FFFFFF', color: 'black', border: 'none', width: !open ? '95%' : '82.2%' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -178,14 +181,14 @@ export default function Sidebar() {
         }}
         open={open}
       >
-        <DrawerHeader>
-          <Image className='w-8 mr-auto' alt='logo' src={logo} />
+        <div className='flex items-center'>
+          <Image className='w-8 h-10 mx-2' alt='logo' src={logo} />
           <div className='flex justify-center items-center text-left p-4 mr-4'>
             <Link href='/'>
               <p className='mr-10' style={{ opacity: open ? 1 : 0 }}>Home Dtech</p>
             </Link>
           </div>
-        </DrawerHeader>
+        </div>
         <Divider />
         <List>
 
@@ -198,67 +201,67 @@ export default function Sidebar() {
             const { name, src, alt, font, leftIcon } = data
             return (
               <ListItem key={index} sx={{ display: 'block' }}>
-                {!leftIcon? 
+                {!leftIcon ?
                   <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    display: 'flex',
-                  }}
-                >
-                  <ListItemIcon
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 1 : 'auto',
-                      textAlign: 'center',
-                      justifyContent: 'center',
+                      minHeight: 48,
+                      display: 'flex',
                     }}
                   >
-                    {src && <Image
-                      src={src}
-                      width={20}
-                      alt={alt} />}
-                    {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
-                  </ListItemIcon>
-                  <Link href={name.toLowerCase()}>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 1 : 'auto',
+                        textAlign: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {src && <Image
+                        src={src}
+                        width={20}
+                        alt={alt} />}
+                      {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
+                    </ListItemIcon>
+                    <Link href={name.toLowerCase()}>
+                      <ListItemText
+                        primary={name}
+                        sx={{ opacity: open ? 1 : 0, color: 'white' }}
+                        primaryTypographyProps={{ fontSize: '13px' }} />
+                    </Link>
+
+                  </ListItemButton> :
+                  <ListItemButton
+                    onClick={() => handleCollapse(index)}
+                    sx={{
+                      minHeight: 48,
+                      display: 'flex',
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 1 : 'auto',
+                        textAlign: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {src && <Image
+                        src={src}
+                        width={20}
+                        alt={alt} />}
+                      {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
+                    </ListItemIcon>
                     <ListItemText
                       primary={name}
                       sx={{ opacity: open ? 1 : 0, color: 'white' }}
                       primaryTypographyProps={{ fontSize: '13px' }} />
-                  </Link> 
-                 
-                </ListItemButton>:
-                 <ListItemButton
-                 onClick={handleCollapse}
-                 sx={{
-                   minHeight: 48,
-                   display: 'flex',
-                 }}
-               >
-                 <ListItemIcon
-                   sx={{
-                     minWidth: 0,
-                     mr: open ? 1 : 'auto',
-                     textAlign: 'center',
-                     justifyContent: 'center',
-                   }}
-                 >
-                   {src && <Image
-                     src={src}
-                     width={20}
-                     alt={alt} />}
-                   {font && <FontAwesomeIcon className='text-gray-500' icon={font} />}
-                 </ListItemIcon>
-                   <ListItemText
-                     primary={name}
-                     sx={{ opacity: open ? 1 : 0, color: 'white' }}
-                     primaryTypographyProps={{ fontSize: '13px' }} />
-                      {leftIcon &&
-                    <span>{!ExpandIcon ? <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> : <ExpandMoreIcon sx={{color: 'white' }}/>}
-                    </span>}
-               </ListItemButton>
+                    {leftIcon &&
+                      <span>{!ExpandIcon ? <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> : <ExpandMoreIcon sx={{ color: 'white' }} />}
+                      </span>}
+                  </ListItemButton>
                 }
-                
-                <Collapse in={isCollapse} timeout='auto' unmountOnExit>
+
+                <Collapse in={collapseIndex === index} timeout='auto' unmountOnExit>
                   {['All mail', 'Trash', 'Spam'].map((text, index) => (
                     <ListItem key={text} sx={{ display: 'block' }}>
                       <ListItemButton
