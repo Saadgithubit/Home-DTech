@@ -112,7 +112,7 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
                                     <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
                                         <FontAwesomeIcon className="text-gray-500 text-xs" icon={faCircle} />
                                     </ListItemIcon>
-                                    <Link href={`nestedroutes/${items.toLocaleLowerCase()}`}>
+                                    <Link href={`nestedroutes/${items.replace(/\s/g, '').toLocaleLowerCase()}`}>
                                     <ListItemText primary={items} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
                                     </Link>
                                 </ListItemButton>
