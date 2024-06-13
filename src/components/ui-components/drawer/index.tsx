@@ -1,13 +1,13 @@
+import Link from 'next/link';
 import { styled, Theme, CSSObject } from '@mui/material/styles';
-import { Drawer as MuiDrawer, } from '@mui/material';
+import { Drawer as MuiDrawer, ListItemButton, ListItemIcon, List, Collapse, ListItemText } from '@mui/material';
 
-import {
-    faTicket, faFolderOpen, faDesktop, faUsers, faCity, faCalendarDays, faSnowflake, faHouseLaptop,
-    faHandHoldingDroplet, faPersonShelter
-} from '@fortawesome/free-solid-svg-icons';
+import { faTicket, faFolderOpen, faDesktop, faUsers, faCity, faCalendarDays, faSnowflake, faHouseLaptop, faHandHoldingDroplet, faPersonShelter } from '@fortawesome/free-solid-svg-icons';
+
+import { ExpandMore, ChevronLeft as ChevronLeftIcon } from '@mui/icons-material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const drawerWidth = 240;
-
 
 export const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -17,23 +17,6 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
-export const drawerStyling = {
-    backgroundColor: '#343A40',
-    color: 'white',
-};
-
-export const drawerData = [
-    { name: 'Dashboard', font: faDesktop, alt: 'dashboardIcon', leftIcon: false },
-    { name: 'UserManagement', font: faUsers, alt: 'userIcon', leftIcon: true },
-    { name: 'Building', font: faCity, alt: 'buildingIcon', leftIcon: false },
-    { name: 'Rooms', font: faPersonShelter, alt: 'roomIcon', leftIcon: true },
-    { name: 'Components', font: faSnowflake, alt: 'componentIcon', leftIcon: false },
-    { name: 'Booking', font: faCalendarDays, alt: 'bookingIcon', leftIcon: false },
-    { name: 'Engineer`s Data Entry', font: faHouseLaptop, alt: 'dkDataEngineerIcon', leftIcon: true },
-    { name: 'Master Product', font: faHandHoldingDroplet, alt: 'dkProductIcon', leftIcon: true },
-    { name: 'Tickets', font: faTicket, alt: 'faTicket', leftIcon: true },
-    { name: 'File Manager', font: faFolderOpen, alt: 'faFolderOpen', leftIcon: false },
-];
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -71,3 +54,65 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
         }),
     }),
 );
+
+const drawerData = [
+    { name: 'Dashboard', font: faDesktop, alt: 'dashboardIcon', leftIcon: false },
+    { name: 'UserManagement', font: faUsers, alt: 'userIcon', leftIcon: true },
+    { name: 'Building', font: faCity, alt: 'buildingIcon', leftIcon: false },
+    { name: 'Rooms', font: faPersonShelter, alt: 'roomIcon', leftIcon: true },
+    { name: 'Components', font: faSnowflake, alt: 'componentIcon', leftIcon: false },
+    { name: 'Booking', font: faCalendarDays, alt: 'bookingIcon', leftIcon: false },
+    { name: 'Engineer`s Data Entry', font: faHouseLaptop, alt: 'dkDataEngineerIcon', leftIcon: true },
+    { name: 'Master Product', font: faHandHoldingDroplet, alt: 'dkProductIcon', leftIcon: true },
+    { name: 'Tickets', font: faTicket, alt: 'faTicket', leftIcon: true },
+    { name: 'File Manager', font: faFolderOpen, alt: 'faFolderOpen', leftIcon: false },
+];
+
+interface DrawerListProps {
+    open: boolean;
+    collapseIndex: number | null;
+    handleCollapse: (index: number) => void;
+    isExpanded: boolean;
+}
+
+export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded }: DrawerListProps) {
+    return (
+        <List>
+            {drawerData.map((data, index) => {
+                const { name, alt, font, leftIcon } = data;
+                return (
+                    <ListItemIcon key={index} sx={{ display: 'block' }}>
+                        {!leftIcon ? (
+                            <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
+                                <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                    {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
+                                </ListItemIcon>
+                                <Link href={name.toLowerCase()}>
+                                    <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: 'white' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                </Link>
+                            </ListItemButton>
+                        ) : (
+                            <ListItemButton onClick={() => handleCollapse(index)} sx={{ minHeight: 48, display: 'flex' }}>
+                                <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                    {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
+                                </ListItemIcon>
+                                <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: 'white' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                <span>{!isExpanded ? <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> : <ExpandMore sx={{ color: 'white' }} />}</span>
+                            </ListItemButton>
+                        )}
+                        <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
+                            {['All mail', 'Trash', 'Spam'].map((text) => (
+                                <ListItemIcon key={text} sx={{ display: 'block' }}>
+                                    <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
+                                        <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center' }} />
+                                        <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color: 'white' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                    </ListItemButton>
+                                </ListItemIcon>
+                            ))}
+                        </Collapse>
+                    </ListItemIcon>
+                );
+            })}
+        </List>
+    );
+}
