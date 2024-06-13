@@ -5,10 +5,8 @@ import Sidebar from "@/components/ui-components/sidebar/index";
 
 export default function Homepage(){
     return(
-        <main className="bg-[#F4F6F9] h-screen">
-        <Sidebar/>
+        <main>
         <Homebar/>
-        <Footer/>
         </main>
     )
 }
