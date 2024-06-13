@@ -23,6 +23,7 @@ export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [collapseIndex, setCollapseIndex] = useState<number | null>(null);
+  const [listName , setlistName] = useState('')
 
   const handleDrawerOpen = () => {
     setOpen(true);
