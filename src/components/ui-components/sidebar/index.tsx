@@ -5,70 +5,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { useTheme } from '@mui/material/styles';
-import { Toolbar, List, CssBaseline, Typography, Divider, Collapse, IconButton, Box, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Toolbar, List, CssBaseline, Typography, Divider, IconButton, Box, ListItemText } from '@mui/material';
 
-import { ExpandMore, Menu as MenuIcon, ChevronLeft as ChevronLeftIcon } from '@mui/icons-material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Menu as MenuIcon } from '@mui/icons-material';
 
 import logo from '../../../Images/leakdtech-logo.png';
 import AppBar from '../appbar';
-import { Drawer, DrawerHeader, drawerStyling , drawerData } from '../drawer';
+import { Drawer, DrawerHeader, DrawerList } from '../drawer';
 
-interface DrawerListProps {
-  open: boolean;
-  collapseIndex: number | null;
-  handleCollapse: (index: number) => void;
-  isExpanded: boolean;
-}
-
-function DrawerList({ open, collapseIndex, handleCollapse, isExpanded }: DrawerListProps) {
-  return (
-    <List>
-      {drawerData.map((data, index) => {
-        const { name, alt, font, leftIcon } = data;
-        return (
-          <ListItemIcon key={index} sx={{ display: 'block' }}>
-            {!leftIcon ? (
-              <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
-                <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
-                  {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
-                </ListItemIcon>
-                <Link href={name.toLowerCase()}>
-                  <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: 'white' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                </Link>
-              </ListItemButton>
-            ) : (
-              <ListItemButton onClick={() => handleCollapse(index)} sx={{ minHeight: 48, display: 'flex' }}>
-                <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
-                  {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
-                </ListItemIcon>
-                <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: 'white' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                <span>{!isExpanded ? <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> : <ExpandMore sx={{ color: 'white' }} />}</span>
-              </ListItemButton>
-            )}
-            <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
-              {['All mail', 'Trash', 'Spam'].map((text) => (
-                <ListItemIcon key={text} sx={{ display: 'block' }}>
-                  <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
-                    <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center' }} />
-                    <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color: 'white' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                  </ListItemButton>
-                </ListItemIcon>
-              ))}
-            </Collapse>
-          </ListItemIcon>
-        );
-      })}
-    </List>
-  );
-}
+const drawerStyling = {
+  backgroundColor: '#343A40',
+  color: 'white',
+};
 
 export default function Sidebar() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [collapseIndex, setCollapseIndex] = useState<number | null>(null);
-  
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
