@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/ui-components/sidebar";
 import Footer from "@/components/ui-components/footer";
+import { DrawerProvider } from "@/contextApi";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ backgroundColor: '#F4F6F9' }} className={inter.className}>
+        <DrawerProvider>
         <Sidebar />
         {children}
         <Footer />
+        </DrawerProvider>
       </body>
     </html>
   );

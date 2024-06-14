@@ -56,21 +56,21 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
 );
 
 const drawerData = [
-    { name: 'Dashboard', font: faDesktop, alt: 'dashboardIcon', leftIcon: false },
-    { name: 'User Management', font: faUsers, alt: 'userIcon', leftIcon: true, 
+    { name: 'Dashboard', font: faDesktop, leftIcon: false },
+    { name: 'User Management', font: faUsers, leftIcon: true, 
     nestedItems: ['Users', 'Roles'], },
-    { name: 'Building', font: faCity, alt: 'buildingIcon', leftIcon: false },
-    { name: 'Rooms', font: faPersonShelter, alt: 'roomIcon', leftIcon: true, 
-    nestedItems: ['Rooms', 'Rooms s', 'Rooms Types', 'Floor'], },
-    { name: 'Components', font: faSnowflake, alt: 'componentIcon', leftIcon: false },
-    { name: 'Booking', font: faCalendarDays, alt: 'bookingIcon', leftIcon: false },
-    { name: 'Engineers Data Entry', font: faHouseLaptop, alt: 'dkDataEngineerIcon', leftIcon: true, 
+    { name: 'Building', font: faCity, leftIcon: false },
+    { name: 'Rooms', font: faPersonShelter, leftIcon: true, 
+    nestedItems: ['Rooms', 'Rooms Name', 'Rooms Types', 'Floor'], },
+    { name: 'Components', font: faSnowflake, leftIcon: false },
+    { name: 'Booking', font: faCalendarDays, leftIcon: false },
+    { name: 'Engineers Data Entry', font: faHouseLaptop, leftIcon: true,
     nestedItems: ['Manual Test Sheet', 'Test Sheet', 'Service Record', 'Snages', 'Safety Notice', 'Post Inspection'] },
-    { name: 'Master Product', font: faHandHoldingDroplet, alt: 'dkProductIcon', leftIcon: true, 
+    { name: 'Master Product', font: faHandHoldingDroplet, leftIcon: true, 
     nestedItems: ['Master Product List', 'Product Category', 'Product Type', 'Product Material', 'Product Brand', 'Product Model', 'Product Custom', 'Product Version', 'Product Color'], },
-    { name: 'Tickets', font: faTicket, alt: 'faTicket', leftIcon: true ,
+    { name: 'Tickets', font: faTicket, leftIcon: true ,
     nestedItems: ['Tickets', 'Ticket Types',]},
-    { name: 'File Manager', font: faFolderOpen, alt: 'faFolderOpen', leftIcon: false },
+    { name: 'File Manager', font: faFolderOpen, leftIcon: false },
 ];
 
 
@@ -85,7 +85,7 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
     return (
         <List>
             {drawerData.map((list, index) => {
-                const { name, alt, font, leftIcon, nestedItems } = list;
+                const { name, font, leftIcon, nestedItems } = list;
                 return (
                     <ListItemIcon key={index} sx={{ display: 'block' }}>
                         {!leftIcon ? (
@@ -103,7 +103,15 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
                                     {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
                                 </ListItemIcon>
                                 <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                                <span>{!isExpanded ? <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> : <ExpandMore sx={{ color: 'white' }} />}</span>
+                                {!isExpanded ? 
+                                <span>
+                                <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> </span> :
+                                 <span>
+                                     {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
+                                      <ExpandMore sx={{ color: 'white' }} />
+                                     </Collapse>}
+                                 </span>
+                                 }
                             </ListItemButton>
                         )}
                         {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>

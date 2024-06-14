@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,6 +12,7 @@ import { Menu as MenuIcon } from '@mui/icons-material';
 import logo from '../../../Images/leakdtech-logo.png';
 import AppBar from '../appbar';
 import { Drawer, DrawerHeader, DrawerList } from '../drawer';
+import { DrawerContext } from '@/contextApi';
 
 const drawerStyling = {
   backgroundColor: '#343A40',
@@ -20,17 +21,21 @@ const drawerStyling = {
 
 export default function Sidebar() {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [collapseIndex, setCollapseIndex] = useState<number | null>(null);
   const [listName , setlistName] = useState('')
+  const [open , setOpen] = useState(false)
+  let { isOpen , setisOpen } = useContext(DrawerContext)
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    setisOpen('open')
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
+    setisOpen('close')
+
   };
 
   const handleCollapse = (index: number) => {
