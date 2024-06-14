@@ -4,7 +4,7 @@ import { DrawerContext } from "@/contextApi"
 import { useContext } from "react"
 
 export default function Footer (){
-  let { isOpen , setisOpen } = useContext(DrawerContext)
+  let { isOpen } = useContext(DrawerContext)
 
     return(
         <main className="w-full absolute bottom-1 right-1 flex justify-end">

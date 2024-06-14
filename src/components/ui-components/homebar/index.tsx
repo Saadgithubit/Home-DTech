@@ -4,7 +4,7 @@ import { DrawerContext } from "@/contextApi"
 import { useContext } from "react"
 
 export default function Homebar(){
-    let { isOpen , setisOpen } = useContext(DrawerContext)
+    let { isOpen } = useContext(DrawerContext)
     console.log(open);
     
     
