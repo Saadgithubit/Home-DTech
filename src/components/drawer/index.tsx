@@ -124,14 +124,16 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
                                     </span>
                                 }
                             </ListItemButton>)
-                            : (<Link href={name.replace(/\s/g, '-').toLowerCase()}>
-                                <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
-                                    <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
-                                        {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                                </ListItemButton>
-                            </Link>)}
+                            : (
+                                <Link href={name.replace(/\s/g, '-').toLowerCase()}>
+                                    <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
+                                        <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                            {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
+                                        </ListItemIcon>
+                                        <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                    </ListItemButton>
+                                </Link>
+                            )}
                         {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
                             {nestedItems.map((items) => (
                                 <Link href={`/${items.replace(/\s/g, '-').toLocaleLowerCase()}`}>

@@ -22,9 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <body style={{ backgroundColor: '#F4F6F9' }} className={inter.className}>
         <DrawerProvider>
-        <Sidebar />
-        {children}
-        <Footer />
+          <Sidebar />
+          {children}
+          <Footer />
         </DrawerProvider>
       </body>
     </html>
