@@ -103,12 +103,12 @@ interface DrawerListProps {
 export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }: DrawerListProps) {
     return (
         <List>
-            {drawerData.map((list, index) => {
-                const { name, font, nested, nestedItems } = list;
+            {drawerData.map((item1, index1) => {
+                const { name, font, nested, nestedItems } = item1;
                 return (
-                    <ListItemIcon key={index} sx={{ display: 'block' }}>
+                    <ListItemIcon key={index1} sx={{ display: 'block' }}>
                         {nested
-                            ? (<ListItemButton onClick={() => handleCollapse(index)} sx={{ minHeight: 48, display: 'flex' }}>
+                            ? (<ListItemButton onClick={() => handleCollapse(index1)} sx={{ minHeight: 48, display: 'flex' }}>
                                 <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
                                     {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
                                 </ListItemIcon>
@@ -118,30 +118,28 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
                                         <ChevronLeft sx={{ opacity: open ? 1 : 0, color: 'white' }} />
                                     </span>
                                     : <span>
-                                        {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
+                                        {nestedItems && <Collapse in={collapseIndex === index1} timeout="auto" unmountOnExit>
                                             <ExpandMore sx={{ color: 'white' }} />
                                         </Collapse>}
                                     </span>
                                 }
                             </ListItemButton>)
-                            : (
-                                <Link href={name.replace(/\s/g, '-').toLowerCase()}>
-                                    <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
-                                        <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
-                                            {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
-                                        </ListItemIcon>
-                                        <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                                    </ListItemButton>
-                                </Link>
-                            )}
-                        {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
-                            {nestedItems.map((items) => (
-                                <Link href={`/${items.replace(/\s/g, '-').toLocaleLowerCase()}`}>
+                            : (<Link href={name.replace(/\s/g, '-').toLowerCase()}>
+                                <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
+                                    <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                        {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
+                                    </ListItemIcon>
+                                    <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                </ListItemButton>
+                            </Link>)}
+                        {nestedItems && <Collapse in={collapseIndex === index1} timeout="auto" unmountOnExit>
+                            {nestedItems.map((item2, index2) => (
+                                <Link key={index2} href={`/${item2.replace(/\s/g, '-').toLocaleLowerCase()}`}>
                                     <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
                                         <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
                                             <FontAwesomeIcon className="text-gray-500 text-xs" icon={faCircle} />
                                         </ListItemIcon>
-                                        <ListItemText primary={items} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                        <ListItemText primary={item2} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
                                     </ListItemButton>
                                 </Link>
                             ))}
