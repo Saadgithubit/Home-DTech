@@ -29,12 +29,12 @@ export default function Sidebar() {
 
   const handleDrawerOpen = () => {
     setOpen(true);
-    setisOpen('open')
+    // setisOpen('open')
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
-    setisOpen('close')
+    // setisOpen('close')
 
   };
 

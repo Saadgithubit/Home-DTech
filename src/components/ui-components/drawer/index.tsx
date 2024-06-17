@@ -4,7 +4,7 @@ import { Drawer as MuiDrawer, ListItemButton, ListItemIcon, List, Collapse, List
 
 import { faTicket, faFolderOpen, faDesktop, faUsers, faCity, faCalendarDays, faSnowflake, faHouseLaptop, faHandHoldingDroplet, faPersonShelter, faCircle } from '@fortawesome/free-solid-svg-icons';
 
-import { ExpandMore, ChevronLeft as ChevronLeftIcon } from '@mui/icons-material';
+import { ExpandMore, ChevronLeft } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const drawerWidth = 240;
@@ -56,33 +56,42 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
 );
 
 const drawerData = [
-    { name: 'Dashboard', font: faDesktop, leftIcon: false },
     {
-        name: 'User Management', font: faUsers, leftIcon: true,
+        name: 'Dashboard', font: faDesktop, nested: false
+    },
+    {
+        name: 'User Management', font: faUsers, nested: true,
         nestedItems: ['Users', 'Roles'],
     },
-    { name: 'Building', font: faCity, leftIcon: false },
     {
-        name: 'Room Management', font: faPersonShelter, leftIcon: true,
+        name: 'Building', font: faCity, nested: false
+    },
+    {
+        name: 'Room Management', font: faPersonShelter, nested: true,
         nestedItems: ['Rooms', 'Room Names', 'Room Types', 'Floors'],
     },
-    { name: 'Components', font: faSnowflake, leftIcon: false },
-    { name: 'Booking', font: faCalendarDays, leftIcon: false },
     {
-        name: 'Engineers Data Entry', font: faHouseLaptop, leftIcon: true,
+        name: 'Components', font: faSnowflake, nested: false
+    },
+    {
+        name: 'Booking', font: faCalendarDays, nested: false
+    },
+    {
+        name: 'Engineers Data Entry', font: faHouseLaptop, nested: true,
         nestedItems: ['Manual Test Sheet', 'Test Sheet', 'Service Record', 'Snages', 'Safety Notice', 'Post Inspection']
     },
     {
-        name: 'Master Product', font: faHandHoldingDroplet, leftIcon: true,
+        name: 'Master Product', font: faHandHoldingDroplet, nested: true,
         nestedItems: ['Master Product List', 'Product Category', 'Product Type', 'Product Material', 'Product Brand', 'Product Model', 'Product Custom', 'Product Version', 'Product Color'],
     },
     {
-        name: 'Ticket Management', font: faTicket, leftIcon: true,
+        name: 'Ticket Management', font: faTicket, nested: true,
         nestedItems: ['Tickets', 'Ticket Types',]
     },
-    { name: 'File Manager', font: faFolderOpen, leftIcon: false },
+    {
+        name: 'File Manager', font: faFolderOpen, nested: false
+    },
 ];
-
 
 interface DrawerListProps {
     open: boolean;
@@ -95,35 +104,34 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
     return (
         <List>
             {drawerData.map((list, index) => {
-                const { name, font, leftIcon, nestedItems } = list;
+                const { name, font, nested, nestedItems } = list;
                 return (
                     <ListItemIcon key={index} sx={{ display: 'block' }}>
-                        {!leftIcon ? (
-                            <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
+                        {nested
+                            ? (<ListItemButton onClick={() => handleCollapse(index)} sx={{ minHeight: 48, display: 'flex' }}>
+                                <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                    {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
+                                </ListItemIcon>
+                                <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                {!isExpanded
+                                    ? <span>
+                                        <ChevronLeft sx={{ opacity: open ? 1 : 0, color: 'white' }} />
+                                    </span>
+                                    : <span>
+                                        {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
+                                            <ExpandMore sx={{ color: 'white' }} />
+                                        </Collapse>}
+                                    </span>
+                                }
+                            </ListItemButton>)
+                            : (<ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
                                 <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
                                     {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
                                 </ListItemIcon>
                                 <Link href={name.replace(/\s/g, '').toLowerCase()}>
                                     <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
                                 </Link>
-                            </ListItemButton>
-                        ) : (
-                            <ListItemButton onClick={() => handleCollapse(index)} sx={{ minHeight: 48, display: 'flex' }}>
-                                <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
-                                    {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
-                                </ListItemIcon>
-                                <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                                {!isExpanded ?
-                                    <span>
-                                        <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> </span> :
-                                    <span>
-                                        {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
-                                            <ExpandMore sx={{ color: 'white' }} />
-                                        </Collapse>}
-                                    </span>
-                                }
-                            </ListItemButton>
-                        )}
+                            </ListItemButton>)}
                         {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
                             {nestedItems.map((items) => (
                                 <Link href={`/${items.replace(/\s/g, '-').toLocaleLowerCase()}`}>

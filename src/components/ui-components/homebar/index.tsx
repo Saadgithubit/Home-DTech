@@ -7,7 +7,6 @@ export default function Homebar(){
     let { isOpen } = useContext(DrawerContext)
     // console.log(open);
     
-    
     return(
         <div className="ml-16 flex justify-end space-y-4">
             <div style={{width: isOpen === 'close'? '97%' : '85%'}}>
