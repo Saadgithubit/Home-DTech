@@ -57,19 +57,29 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
 
 const drawerData = [
     { name: 'Dashboard', font: faDesktop, leftIcon: false },
-    { name: 'User Management', font: faUsers, leftIcon: true, 
-    nestedItems: ['Users', 'Roles'], },
+    {
+        name: 'User Management', font: faUsers, leftIcon: true,
+        nestedItems: ['Users', 'Roles'],
+    },
     { name: 'Building', font: faCity, leftIcon: false },
-    { name: 'Rooms', font: faPersonShelter, leftIcon: true, 
-    nestedItems: ['Rooms', 'Rooms Name', 'Rooms Types', 'Floor'], },
+    {
+        name: 'Room Management', font: faPersonShelter, leftIcon: true,
+        nestedItems: ['Rooms', 'Room Names', 'Room Types', 'Floors'],
+    },
     { name: 'Components', font: faSnowflake, leftIcon: false },
     { name: 'Booking', font: faCalendarDays, leftIcon: false },
-    { name: 'Engineers Data Entry', font: faHouseLaptop, leftIcon: true,
-    nestedItems: ['Manual Test Sheet', 'Test Sheet', 'Service Record', 'Snages', 'Safety Notice', 'Post Inspection'] },
-    { name: 'Master Product', font: faHandHoldingDroplet, leftIcon: true, 
-    nestedItems: ['Master Product List', 'Product Category', 'Product Type', 'Product Material', 'Product Brand', 'Product Model', 'Product Custom', 'Product Version', 'Product Color'], },
-    { name: 'Tickets', font: faTicket, leftIcon: true ,
-    nestedItems: ['Tickets', 'Ticket Types',]},
+    {
+        name: 'Engineers Data Entry', font: faHouseLaptop, leftIcon: true,
+        nestedItems: ['Manual Test Sheet', 'Test Sheet', 'Service Record', 'Snages', 'Safety Notice', 'Post Inspection']
+    },
+    {
+        name: 'Master Product', font: faHandHoldingDroplet, leftIcon: true,
+        nestedItems: ['Master Product List', 'Product Category', 'Product Type', 'Product Material', 'Product Brand', 'Product Model', 'Product Custom', 'Product Version', 'Product Color'],
+    },
+    {
+        name: 'Ticket Management', font: faTicket, leftIcon: true,
+        nestedItems: ['Tickets', 'Ticket Types',]
+    },
     { name: 'File Manager', font: faFolderOpen, leftIcon: false },
 ];
 
@@ -103,27 +113,27 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
                                     {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
                                 </ListItemIcon>
                                 <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                                {!isExpanded ? 
-                                <span>
-                                <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> </span> :
-                                 <span>
-                                     {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
-                                      <ExpandMore sx={{ color: 'white' }} />
-                                     </Collapse>}
-                                 </span>
-                                 }
+                                {!isExpanded ?
+                                    <span>
+                                        <ChevronLeftIcon sx={{ opacity: open ? 1 : 0, color: 'white' }} /> </span> :
+                                    <span>
+                                        {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
+                                            <ExpandMore sx={{ color: 'white' }} />
+                                        </Collapse>}
+                                    </span>
+                                }
                             </ListItemButton>
                         )}
                         {nestedItems && <Collapse in={collapseIndex === index} timeout="auto" unmountOnExit>
                             {nestedItems.map((items) => (
-                                <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
-                                    <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
-                                        <FontAwesomeIcon className="text-gray-500 text-xs" icon={faCircle} />
-                                    </ListItemIcon>
-                                    <Link href={`nestedroutes/${items.replace(/\s/g, '').toLocaleLowerCase()}`}>
-                                    <ListItemText primary={items} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
-                                    </Link>
-                                </ListItemButton>
+                                <Link href={`/${items.replace(/\s/g, '-').toLocaleLowerCase()}`}>
+                                    <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
+                                        <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                            <FontAwesomeIcon className="text-gray-500 text-xs" icon={faCircle} />
+                                        </ListItemIcon>
+                                        <ListItemText primary={items} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                    </ListItemButton>
+                                </Link>
                             ))}
                         </Collapse>}
                     </ListItemIcon>
