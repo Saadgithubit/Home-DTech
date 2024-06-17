@@ -72,7 +72,7 @@ export default function Sidebar() {
         <Divider />
         <DrawerList isExpanded={isExpanded} open={open} collapseIndex={collapseIndex} handleCollapse={handleCollapse} />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="div" sx={{ flexGrow: 1 }}>
         <DrawerHeader />
       </Box>
     </Box>
