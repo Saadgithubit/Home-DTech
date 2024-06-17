@@ -1,7 +1,7 @@
-import Bookingpage from "@/components/page-partials/bookingpage";
-
-export default function Building() {
+export default function Booking() {
     return (
-        <Bookingpage />
+        <div className="w-screen h-screen flex justify-center items-center">
+            Booking Page
+        </div>
     )
 }

@@ -1,7 +1,7 @@
-import Componentpage from "@/components/page-partials/componentspage";
-
-export default function Building() {
+export default function Components() {
     return (
-        <Componentpage />
+        <div className="w-screen h-screen flex justify-center items-center">
+            Component Page
+        </div>
     )
 }

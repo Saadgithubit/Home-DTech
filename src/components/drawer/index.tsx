@@ -128,7 +128,7 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
                                 <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
                                     {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
                                 </ListItemIcon>
-                                <Link href={name.replace(/\s/g, '').toLowerCase()}>
+                                <Link href={name.replace(/\s/g, '-').toLowerCase()}>
                                     <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
                                 </Link>
                             </ListItemButton>)}

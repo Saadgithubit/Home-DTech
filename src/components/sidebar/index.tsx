@@ -9,7 +9,7 @@ import { Toolbar, List, CssBaseline, Typography, Divider, IconButton, Box, ListI
 
 import { Menu as MenuIcon } from '@mui/icons-material';
 
-import logo from '../../../Images/leakdtech-logo.png';
+import logo from '../../Images/leakdtech-logo.png';
 import AppBar from '../appbar';
 import { Drawer, DrawerHeader, DrawerList } from '../drawer';
 import { DrawerContext } from '@/contextApi';

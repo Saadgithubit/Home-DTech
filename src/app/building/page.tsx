@@ -1,7 +1,7 @@
-import Buildingpage from "@/components/page-partials/buildingpage";
-
 export default function Building() {
     return (
-        <Buildingpage/>
+        <div className="w-screen h-screen flex justify-center items-center">
+            Building Page
+        </div>
     )
 }

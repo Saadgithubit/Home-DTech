@@ -1,7 +1,7 @@
-export default function Bookingpage() {
+export default function FileManager() {
     return (
         <div className="w-screen h-screen flex justify-center items-center">
-            Booking Page
+            File Manager Page
         </div>
     )
 }

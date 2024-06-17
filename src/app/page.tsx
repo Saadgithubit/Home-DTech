@@ -1,7 +1,11 @@
-import Homepage from "../components/page-partials/homepage";
+import Sidebar from "@/components/sidebar";
+import Homebar from "@/components/homebar";
 
 export default function Home() {
   return (
-    <Homepage/>
+    <main>
+      <Sidebar />
+      <Homebar />
+    </main>
   );
 }
