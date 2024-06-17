@@ -15,6 +15,12 @@ const AppBar = styled(MuiAppBar, {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
     }),
+    ...(!open && {
+        width: `calc(100% - ${theme.spacing(7)} - 1px)`,
+        [theme.breakpoints.up('sm')]: {
+            width: `calc(100% - ${theme.spacing(8)} - 1px)`,
+        },
+    }),
     ...(open && {
         marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,

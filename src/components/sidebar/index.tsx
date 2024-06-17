@@ -24,7 +24,7 @@ export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [collapseIndex, setCollapseIndex] = useState<number | null>(null);
   const [listName, setlistName] = useState('')
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   let { isOpen, setisOpen } = useContext(DrawerContext)
 
   const handleDrawerOpen = () => {
@@ -45,10 +45,10 @@ export default function Sidebar() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#FFFFFF', color: 'black', ...(!open && { width: '96.2%' }) }}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#FFFFFF', color: 'black' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton color="inherit" aria-label="open drawer" onClick={open ? handleDrawerClose : handleDrawerOpen} edge="start"
-            sx={{ marginRight: 5 }}>
+            sx={{ mr: 5 }}>
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ textJustify: 'end' }}>
