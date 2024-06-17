@@ -23,19 +23,18 @@ export default function Sidebar() {
   const theme = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
   const [collapseIndex, setCollapseIndex] = useState<number | null>(null);
-  const [listName , setlistName] = useState('')
-  const [open , setOpen] = useState(false)
-  let { isOpen , setisOpen } = useContext(DrawerContext)
+  const [listName, setlistName] = useState('')
+  const [open, setOpen] = useState(true)
+  let { isOpen, setisOpen } = useContext(DrawerContext)
 
   const handleDrawerOpen = () => {
     setOpen(true);
-    // setisOpen('open')
+    setisOpen('open')
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
-    // setisOpen('close')
-
+    setisOpen('close')
   };
 
   const handleCollapse = (index: number) => {
@@ -46,14 +45,12 @@ export default function Sidebar() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#FFFFFF', color: 'black', border: 'none', width: !open ? '95%' : '82.2%' }}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#FFFFFF', color: 'black', ...(!open && { width: '96.2%' }) }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <IconButton color="inherit" aria-label="open drawer" onClick={open ? handleDrawerClose : handleDrawerOpen} edge="start">
+          <IconButton color="inherit" aria-label="open drawer" onClick={open ? handleDrawerClose : handleDrawerOpen} edge="start"
+            sx={{ marginRight: 5 }}>
             <MenuIcon />
           </IconButton>
-          <select className="w-1/2 h-12 border-2">
-            <option value="Select">Select</option>
-          </select>
           <Typography variant="h6" noWrap component="div" sx={{ textJustify: 'end' }}>
             Areeb Vohra
           </Typography>
@@ -64,7 +61,7 @@ export default function Sidebar() {
           <Image className="w-8 h-8 mx-2" alt="logo" src={logo} />
           <div className="flex justify-center items-center text-left p-4 mr-4">
             <Link href="/">
-              <p className="mr-10" style={{ opacity: open ? 1 : 0 }}>Home Dtech</p>
+              <p className="mr-10" style={{ opacity: open ? 1 : 0 }}>Home DTech</p>
             </Link>
           </div>
         </div>
