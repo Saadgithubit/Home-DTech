@@ -118,9 +118,15 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
                                         <ChevronLeft sx={{ opacity: open ? 1 : 0, color: 'white' }} />
                                     </span>
                                     : <span>
-                                        {nestedItems && <Collapse in={collapseIndex === index1} timeout="auto" unmountOnExit>
-                                            <ExpandMore sx={{ color: 'white' }} />
-                                        </Collapse>}
+                                        {nestedItems && (
+                                            <span>
+                                            {collapseIndex === index1 ? (
+                                                <ExpandMore sx={{ color: 'white' }} />
+                                            ) : (
+                                                <ChevronLeft sx={{ opacity: open ? 1 : 0, color: 'white' }} />
+                                            )}
+                                        </span>
+                                        )}
                                     </span>
                                 }
                             </ListItemButton>)

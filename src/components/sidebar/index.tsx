@@ -12,7 +12,7 @@ import { Menu as MenuIcon } from '@mui/icons-material';
 import logo from '../../Images/leakdtech-logo.png';
 import AppBar from '../appbar';
 import { Drawer, DrawerHeader, DrawerList } from '../drawer';
-import { DrawerContext } from '@/contextApi';
+import { DrawerContext } from '@/contextApi/index';
 
 const drawerStyling = {
   backgroundColor: '#343A40',
@@ -24,18 +24,18 @@ export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [collapseIndex, setCollapseIndex] = useState<number | null>(null);
   const [listName, setlistName] = useState('')
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   let { isOpen, setisOpen } = useContext(DrawerContext)
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-    setisOpen('open')
-  };
+  // const handleDrawerOpen = () => {
+  //   setOpen(true);
+  //   setisOpen('open')
+  // };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-    setisOpen('close')
-  };
+  // const handleDrawerClose = () => {
+  //   setOpen(false);
+  //   setisOpen('close')
+  // };
 
   const handleCollapse = (index: number) => {
     setCollapseIndex(collapseIndex === index ? null : index);
@@ -46,12 +46,9 @@ export default function Sidebar() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} sx={{ backgroundColor: '#FFFFFF', color: 'black' }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <IconButton color="inherit" aria-label="open drawer" onClick={open ? handleDrawerClose : handleDrawerOpen} edge="start"
-            sx={{ mr: 5 }}>
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ textJustify: 'end' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          
+          <Typography variant="h6" noWrap component="div">
             Areeb Vohra
           </Typography>
         </Toolbar>
