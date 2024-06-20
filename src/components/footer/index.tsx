@@ -8,7 +8,7 @@ export default function Footer (){
 
     return(
         <main className="w-full absolute bottom-1 right-1 flex justify-end">
-            <div style={{width: isOpen === 'close'? '95%' : '85%'}} className="p-4 bg-[#FFFFFF] text-[#869099] text-sm">
+            <div className="p-4 bg-[#FFFFFF] text-[#869099] text-sm lg:w-[82.5%]">
                 <span className="font-semibold">Copyright © 2024</span> All rights reserved.
                 </div>
         </main>
