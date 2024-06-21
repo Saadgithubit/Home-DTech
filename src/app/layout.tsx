@@ -30,7 +30,7 @@ export default function RootLayout({
               {children}
             </div>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </DrawerProvider>
       </body>
     </html>
