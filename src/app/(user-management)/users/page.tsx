@@ -1,9 +1,18 @@
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import NavContainer from "@/components/navcontainer";
-import { Box, Typography } from "@mui/material";
+import ListProducts from "@/components/productlists";
+import ToggleButtons from "@/components/togglebutton";
+import { Box, ListItem, Typography } from "@mui/material";
 
 export default function Users() {
+    const list = [
+        { name: "Anil Kumar", userName: "Anil Kuman", email: "accounts@leakdtech.com", role: "Accounts" },
+        { name: "Antoinette Caruana", userName: "Antoinette	", email: "antoinette@leakdtech.com	", role: "Operations" },
+        { name: "Jonathan Wileman", userName: "jon", email: "jon@leakdtech.com", role: "Engineering Director" },
+        { name: "Jesmi Latheef", userName: "jasmi.latheef", email: "jasmi@leakdtech.com", role: "Operations" },
+        { name: "Luke Neale", userName: "Lukeneale.1", email: "Lukeneale.1@gmail.com", role: "User/Landlords" },
+    ]
     return (
         <div>
             <span className="flex p-2 text-xl items-center justify-between">
@@ -12,24 +21,14 @@ export default function Users() {
             </span>
             <NavContainer />
             <InnerHeader title={'Users List'} />
+            <div className="pb-4 pt-2">
+            <ToggleButtons/>
+            </div>
             <Box
                 component="main"
                 sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2,  }}
             >
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
+                <ListProducts list={list}/>
             </Box>
         </div>
     )
