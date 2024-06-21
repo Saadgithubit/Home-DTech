@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/ui-components/sidebar";
-import Footer from "@/components/ui-components/footer";
+
+import { DrawerProvider } from "@/contextApi";
+import Sidebar from "@/components/sidebar";
+import Footer from "@/components/footer";
+import AppBar from "@/components/appbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +22,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ backgroundColor: '#F4F6F9' }} className={inter.className}>
-        <Sidebar />
-        {children}
-        <Footer />
+        <DrawerProvider>
+          <div className="flex">
+            <Sidebar />
+            <AppBar />
+            <div className="w-full mt-14 p-4">
+              {children}
+            </div>
+          </div>
+          {/* <Footer /> */}
+        </DrawerProvider>
       </body>
     </html>
   );
