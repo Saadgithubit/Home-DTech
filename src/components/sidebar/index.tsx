@@ -21,7 +21,7 @@ export default function Sidebar() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <Drawer sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box' } }} variant="permanent" anchor="left">
+      <Drawer sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box', backgroundColor: '#343A40', color: 'white' } }} variant="permanent" anchor="left">
         <div className="flex items-center">
           <Image className="w-8 h-8 mx-2" alt="logo" src={logo} />
           <div className="flex justify-center items-center text-left p-4 mr-4">
