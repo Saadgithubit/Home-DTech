@@ -1,34 +1,13 @@
-import { styled } from '@mui/material/styles';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { AppBar as MuiAppBar, Toolbar, Typography } from '@mui/material';
 
-const drawerWidth = 240;
-
-interface AppBarProps extends MuiAppBarProps {
-    open?: boolean;
+export default function AppBar() {
+    return (
+        <MuiAppBar position="fixed" sx={{ width: 'calc(100% - 240px)', ml: '240px', backgroundColor: '#FFFFFF', color: 'black' }}>
+            <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Typography variant="h6" noWrap component="div">
+                    Areeb Vohra
+                </Typography>
+            </Toolbar>
+        </MuiAppBar>
+    )
 }
-
-const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-    }),
-    ...(!open && {
-        width: `calc(100% - ${theme.spacing(7)} - 1px)`,
-        [theme.breakpoints.up('sm')]: {
-            width: `calc(100% - ${theme.spacing(8)} - 1px)`,
-        },
-    }),
-    ...(open && {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    }),
-}));
-
-export default AppBar;

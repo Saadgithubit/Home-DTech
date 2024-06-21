@@ -1,59 +1,10 @@
 import Link from 'next/link';
-import { styled, Theme, CSSObject } from '@mui/material/styles';
-import { Drawer as MuiDrawer, ListItemButton, ListItemIcon, List, Collapse, ListItemText } from '@mui/material';
+import { ListItemButton, ListItemIcon, List, Collapse, ListItemText } from '@mui/material';
 
 import { faTicket, faFolderOpen, faDesktop, faUsers, faCity, faCalendarDays, faSnowflake, faHouseLaptop, faHandHoldingDroplet, faPersonShelter, faCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { ExpandMore, ChevronLeft } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-const drawerWidth = 240;
-
-export const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-}));
-
-const openedMixin = (theme: Theme): CSSObject => ({
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-    }),
-    overflowX: 'hidden',
-});
-
-const closedMixin = (theme: Theme): CSSObject => ({
-    transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: `calc(${theme.spacing(7)} + 1px)`,
-    [theme.breakpoints.up('sm')]: {
-        width: `calc(${theme.spacing(8)} + 1px)`,
-    },
-});
-
-export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
-        width: drawerWidth,
-        flexShrink: 0,
-        whiteSpace: 'nowrap',
-        boxSizing: 'border-box',
-        ...(open && {
-            ...openedMixin(theme),
-            '& .MuiDrawer-paper': openedMixin(theme),
-        }),
-        ...(!open && {
-            ...closedMixin(theme),
-            '& .MuiDrawer-paper': closedMixin(theme),
-        }),
-    }),
-);
 
 const drawerData = [
     {
@@ -94,13 +45,12 @@ const drawerData = [
 ];
 
 interface DrawerListProps {
-    open: boolean;
     collapseIndex: number | null;
     handleCollapse: (index: number) => void;
     isExpanded: boolean;
 }
 
-export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }: DrawerListProps) {
+function DrawerList({ collapseIndex, handleCollapse, isExpanded }: DrawerListProps) {
     return (
         <List>
             {drawerData.map((item1, index1) => {
@@ -109,43 +59,43 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
                     <ListItemIcon key={index1} sx={{ display: 'block' }}>
                         {nested
                             ? (<ListItemButton onClick={() => handleCollapse(index1)} sx={{ minHeight: 48, display: 'flex' }}>
-                                <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
                                     {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
                                 </ListItemIcon>
-                                <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                <ListItemText primary={name} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
                                 {!isExpanded
                                     ? <span>
-                                        <ChevronLeft sx={{ opacity: open ? 1 : 0, color: 'white' }} />
+                                        <ChevronLeft sx={{ opacity: 1, color: 'white' }} />
                                     </span>
                                     : <span>
                                         {nestedItems && (
                                             <span>
-                                            {collapseIndex === index1 ? (
-                                                <ExpandMore sx={{ color: 'white' }} />
-                                            ) : (
-                                                <ChevronLeft sx={{ opacity: open ? 1 : 0, color: 'white' }} />
-                                            )}
-                                        </span>
+                                                {collapseIndex === index1 ? (
+                                                    <ExpandMore sx={{ color: 'white' }} />
+                                                ) : (
+                                                    <ChevronLeft sx={{ opacity: 1, color: 'white' }} />
+                                                )}
+                                            </span>
                                         )}
                                     </span>
                                 }
                             </ListItemButton>)
                             : (<Link href={name.replace(/\s/g, '-').toLowerCase()}>
                                 <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
-                                    <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                    <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
                                         {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
                                     </ListItemIcon>
-                                    <ListItemText primary={name} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                    <ListItemText primary={name} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
                                 </ListItemButton>
                             </Link>)}
                         {nestedItems && <Collapse in={collapseIndex === index1} timeout="auto" unmountOnExit>
                             {nestedItems.map((item2, index2) => (
                                 <Link key={index2} href={`/${item2.replace(/\s/g, '-').toLocaleLowerCase()}`}>
-                                    <ListItemButton sx={{ minHeight: 48, justifyContent: open ? 'initial' : 'center', px: 2.5 }}>
-                                        <ListItemIcon sx={{ minWidth: 0, mr: open ? 1 : 'auto', textAlign: 'center', justifyContent: 'center' }}>
+                                    <ListItemButton sx={{ minHeight: 48, justifyContent: 'initial', px: 2.5 }}>
+                                        <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
                                             <FontAwesomeIcon className="text-gray-500 text-xs" icon={faCircle} />
                                         </ListItemIcon>
-                                        <ListItemText primary={item2} sx={{ opacity: open ? 1 : 0, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                        <ListItemText primary={item2} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
                                     </ListItemButton>
                                 </Link>
                             ))}
@@ -156,3 +106,5 @@ export function DrawerList({ open, collapseIndex, handleCollapse, isExpanded, }:
         </List>
     );
 }
+
+export default DrawerList;
