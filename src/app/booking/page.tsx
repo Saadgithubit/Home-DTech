@@ -8,7 +8,7 @@ export default function Booking() {
             <div className="w-[85%]">
             <span className="w-full inline-flex p-2 text-xl items-center justify-between">
                 <h1>Booking</h1>
-                <ButtonComponent variant={'contained'} color={'primary'} title={'Add Booking'} />
+                <ButtonComponent title={'Add Booking'} />
             </span>
             <NavContainer/>
             <InnerHeader title={'Booking List'}/>

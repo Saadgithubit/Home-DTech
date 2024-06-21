@@ -18,8 +18,8 @@ export default function NavContainer() {
                 <input placeholder="Address" className="border-2 text-xs w-96 p-2" />
             </span>
             <span className="w-full justify-end inline-flex p-2 my-2 space-x-2">
-                <ButtonComponent variant={'contained'} color={'grey'} title={'Reset'} />
-                <ButtonComponent variant={'white'} color={'primary'} title={'Filter'} />
+                <ButtonComponent title={'Reset'} />
+                <ButtonComponent title={'Filter'} />
             </span>
         </div>
     )

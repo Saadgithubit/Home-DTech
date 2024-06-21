@@ -8,7 +8,7 @@ export default function Components() {
             <div className="w-[85%]">
             <span className="w-full inline-flex p-2 text-xl items-center justify-between">
                 <h1>Components</h1>
-                <ButtonComponent variant={'contained'} color={'primary'} title={'Add Product Component'} />
+                <ButtonComponent title={'Add Product Component'} />
             </span>
             <NavContainer/>
             <InnerHeader title={'Product Component List'}/>
