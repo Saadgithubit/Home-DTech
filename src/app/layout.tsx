@@ -26,7 +26,9 @@ export default function RootLayout({
           <div className="flex">
             <Sidebar />
             <AppBar />
-            {children}
+            <div className="w-full mt-14 p-4">
+              {children}
+            </div>
           </div>
           <Footer />
         </DrawerProvider>
