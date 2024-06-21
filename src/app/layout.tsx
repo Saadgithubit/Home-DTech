@@ -5,6 +5,7 @@ import "./globals.css";
 import { DrawerProvider } from "@/contextApi";
 import Sidebar from "@/components/sidebar";
 import Footer from "@/components/footer";
+import AppBar from "@/components/appbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +23,11 @@ export default function RootLayout({
     <html lang="en">
       <body style={{ backgroundColor: '#F4F6F9' }} className={inter.className}>
         <DrawerProvider>
-          <Sidebar />
-          {children}
+          <div className="flex">
+            <Sidebar />
+            <AppBar />
+            {children}
+          </div>
           <Footer />
         </DrawerProvider>
       </body>
