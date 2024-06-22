@@ -68,7 +68,7 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
 
     return (
         <div>
-            <div className="pb-4 pt-2">
+            <div className="pb-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
             </div>
             <ul className="flex border-b-2 py-4 px-2 text-sm font-semibold space-x-16">
@@ -101,7 +101,7 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
                     </ul>
                 )
             })}
-            <div className="pb-4 pt-2">
+            <div className="pt-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
             </div>
         </div>
