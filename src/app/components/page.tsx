@@ -5,16 +5,16 @@ import { Box, Typography } from "@mui/material";
 
 export default function Components() {
     return (
-            <div>
+        <div>
             <span className="w-full inline-flex p-2 text-xl items-center justify-between">
                 <h1>Components</h1>
                 <ButtonComponent title={'Add Product Component'} />
             </span>
-            <NavContainer/>
-            <InnerHeader title={'Product Component List'}/>
+            <NavContainer />
+            <InnerHeader title={'Product Component List'} />
             <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2,  }}
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}
             >
                 <Typography paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -31,6 +31,6 @@ export default function Components() {
                     sapien faucibus et molestie ac.
                 </Typography>
             </Box>
-            </div>
+        </div>
     )
 }
