@@ -58,10 +58,11 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
                         <li className='w-36'></li>
                         <li className='w-28 px-3'><span className="inline-block w-3 h-3 rounded-full bg-[#28A745]"></span></li>
                         <li className='flex'>
-                            <button className="p-2 rounded-md text-white bg-[#0069D9] border-2">
+                            <button className="p-2 rounded-s rounded-e text-white bg-[#0069D9]">
                                 <CreateIcon />
                             </button>
-                            <button className="p-2 rounded-md text-white bg-[#C82333] border-2">
+                            <div className='pl-1' />
+                            <button className="p-2 rounded-s rounded-e text-white bg-[#C82333]">
                                 <DeleteIcon />
                             </button>
                         </li>
