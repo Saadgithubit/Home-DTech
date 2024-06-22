@@ -1,6 +1,9 @@
-import React from 'react';
+'use client'
+
+import React, { ChangeEvent } from 'react';
 import { Delete as DeleteIcon, Create as CreateIcon } from '@mui/icons-material'
 import { Box, ListItem } from "@mui/material";
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
@@ -13,7 +16,12 @@ export default function Users() {
         { name: "Antoinette Caruana", userName: "Antoinette	", email: "antoinette@leakdtech.com	", role: "Operations" },
         { name: "Jonathan Wileman", userName: "jon", email: "jon@leakdtech.com", role: "Engineering Director" },
         { name: "Jesmi Latheef", userName: "jasmi.latheef", email: "jasmi@leakdtech.com", role: "Operations" },
+        { name: "Jesmi Latheef", userName: "jasmi.latheef", email: "jasmi@leakdtech.com", role: "Operations" },
         { name: "Luke Neale", userName: "Lukeneale.1", email: "Lukeneale.1@gmail.com", role: "User/Landlords" },
+        { name: "Antoinette Caruana", userName: "Antoinette	", email: "antoinette@leakdtech.com	", role: "Operations" },
+        { name: "Luke Neale", userName: "Lukeneale.1", email: "Lukeneale.1@gmail.com", role: "User/Landlords" },
+        { name: "Anil Kumar", userName: "Anil Kuman", email: "accounts@leakdtech.com", role: "Accounts" },
+        { name: "Jonathan Wileman", userName: "jon", email: "jon@leakdtech.com", role: "Engineering Director" },
     ]
 
     return (
@@ -22,11 +30,8 @@ export default function Users() {
                 <h1>Users</h1>
                 <ButtonComponent title={'Add User'} />
             </span>
-            <NavContainer />
+            {/* <NavContainer /> */}
             <InnerHeader title={'Users List'} />
-            <div className="pb-4 pt-2">
-                <Pagination count={10} />
-            </div>
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2 }}>
                 <UserList list={list} />
             </Box>
@@ -36,6 +41,7 @@ export default function Users() {
 
 interface UserListProps {
     list: ListItem[];
+    itemsPerPage?: number;
 }
 
 interface ListItem {
@@ -45,10 +51,26 @@ interface ListItem {
     role: string;
 }
 
-const UserList: React.FC<UserListProps> = ({ list }) => {
+const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams: any = useSearchParams();
+    const currentPage = parseInt(searchParams.get('page')) || 1;
+
+    const handlePageChange = (event: ChangeEvent<unknown>, value: number) => {
+        router.push(`${pathname}?page=${value}`);
+    };
+
+    const lastIndex = currentPage * itemsPerPage;
+    const firstIndex = lastIndex - itemsPerPage;
+    const displayedList = list.slice(firstIndex, lastIndex);
+    const totalPages = Math.ceil(list.length / itemsPerPage);
 
     return (
         <div>
+            <div className="pb-4 pt-2">
+                <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
+            </div>
             <ul className="flex border-b-2 py-4 px-2 text-sm font-semibold space-x-16">
                 <li className='w-28'>Name</li>
                 <li className='w-28'>User Name</li>
@@ -58,7 +80,7 @@ const UserList: React.FC<UserListProps> = ({ list }) => {
                 <li className='w-28'>Status</li>
                 <li>Actions</li>
             </ul>
-            {list.map((item, index) => {
+            {displayedList.map((item, index) => {
                 const { name, userName, email, role } = item
                 return (
                     <ul key={index} className="flex border-b-2 py-4 px-2 text-xs space-x-16 items-center">
@@ -79,6 +101,9 @@ const UserList: React.FC<UserListProps> = ({ list }) => {
                     </ul>
                 )
             })}
+            <div className="pb-4 pt-2">
+                <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
+            </div>
         </div>
     );
 }

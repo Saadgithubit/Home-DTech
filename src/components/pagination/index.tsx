@@ -1,27 +1,18 @@
-'use client';
-
-import React from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import React, { ChangeEvent } from 'react';
 import { Box, Pagination } from '@mui/material';
 
-const PaginationComponent = ({ count }: { count: number }) => {
-    const router = useRouter();
-    const pathname = usePathname();
-    const searchParams: any = useSearchParams();
-    const currentPage = parseInt(searchParams.get('page')) || 1;
+interface PaginationProps {
+    count: number;
+    page: number;
+    onChange: (event: ChangeEvent<unknown>, value: number) => void;
+}
 
-    const handlePageChange = (event: any, value: number) => {
-        router.push(`${pathname}?page=${value}`);
-    };
-
+const PaginationComponent: React.FC<PaginationProps> = ({ count, page, onChange }) => {
     return (
         <Box display="flex">
             <Pagination
-                variant="outlined"
-                color="primary"
-                count={count}
-                page={currentPage}
-                onChange={handlePageChange}
+                variant="outlined" color="primary"
+                count={count} page={page} onChange={onChange}
                 sx={{
                     '.MuiPaginationItem-root': { margin: 0, marginLeft: '-1px', borderRadius: 0, backgroundColor: 'white', color: '#007bff', paddingX: '.5rem', paddingY: '1.2rem' },
                     '.MuiPaginationItem-root:hover': { backgroundColor: '#e9ecef' },
