@@ -26,7 +26,7 @@ export default function Users() {
 
     return (
         <div>
-            <span className="flex p-2 text-xl items-center justify-between">
+            <span className="flex py-2 text-xl items-center justify-between">
                 <h1>Users</h1>
                 <ButtonComponent title={'Add User'} />
             </span>
