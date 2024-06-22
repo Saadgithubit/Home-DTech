@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import NavContainer from "@/components/navcontainer";
-import UserList from '@/components/pageLists/userList';
+import { UserList } from '@/components/pagelists';
 
 export default function Users() {
     const list = [
