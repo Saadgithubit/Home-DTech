@@ -38,7 +38,7 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
             <div className="pb-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
             </div>
-            <ul className="flex border-b-2 py-4 px-2 text-sm font-semibold space-x-16">
+            <ul className="flex border-b-2 py-4 px-2 text-sm font-semibold justify-between">
                 <li className='w-28'>Name</li>
                 <li className='w-28'>User Name</li>
                 <li className='w-44'>Email</li>
@@ -50,7 +50,7 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
             {displayedList.map((item, index) => {
                 const { name, userName, email, role } = item
                 return (
-                    <ul key={index} className="flex border-b-2 py-4 px-2 text-xs space-x-16 items-center">
+                    <ul key={index} className="flex border-b-2 py-4 px-2 text-xs justify-between items-center">
                         <li className='w-28'>{name}</li>
                         <li className='w-28'>{userName}</li>
                         <li className='w-44'>{email}</li>
