@@ -80,7 +80,7 @@ function DrawerList({ collapseIndex, handleCollapse, isExpanded }: DrawerListPro
                                     </span>
                                 }
                             </ListItemButton>)
-                            : (<Link href={name.replace(/\s/g, '-').toLowerCase()}>
+                            : (<Link href={`/${name.replace(/\s/g, '-').toLowerCase()}`}>
                                 <ListItemButton sx={{ minHeight: 48, display: 'flex',padding: '0 15px' }}>
                                     <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
                                         {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}

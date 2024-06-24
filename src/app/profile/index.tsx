@@ -25,9 +25,10 @@ export default function ProfileData() {
                         label="Name"
                         value={name}
                         onChange={(e) => setname(e.target.value)}
+                        size="small"
                         variant="outlined" />
-                    <span className="border-2 border-gray-300 inline-flex bg-[#E9ECEF] w-14 h-14 justify-center items-center rounded-e-lg">
-                        <PersonIcon sx={{ fontSize: '30px', color: '#495057' }} />
+                    <span className="border-2 border-gray-300 inline-flex bg-[#E9ECEF] w-10 h-10 justify-center items-center rounded-e-lg">
+                        <PersonIcon sx={{ fontSize: '25px', color: '#495057' }} />
                     </span>
                 </div>
                 <div className="flex">
@@ -36,10 +37,11 @@ export default function ProfileData() {
                         id="outlined-basic"
                         label="Email"
                         value={email}
+                        size="small"
                         onChange={(e) => setemail(e.target.value)}
                         variant="outlined" />
-                    <span className="border-2 border-gray-300 inline-flex bg-[#E9ECEF] w-14 h-14 justify-center items-center rounded-e-lg">
-                        <EmailIcon sx={{ fontSize: '30px', color: '#495057' }} />
+                    <span className="border-2 border-gray-300 inline-flex bg-[#E9ECEF] w-10 h-10 justify-center items-center rounded-e-lg">
+                        <EmailIcon sx={{ fontSize: '25px', color: '#495057' }} />
                     </span>
                 </div>
                 <div className="flex">
@@ -47,21 +49,23 @@ export default function ProfileData() {
                         sx={{ width: '88%', padding: 0 }}
                         id="outlined-basic"
                         label="New Password"
+                        size="small"
                         onChange={(e) => setpassword(e.target.value)}
                         variant="outlined" />
-                    <span className="border-2 border-gray-300 inline-flex bg-[#E9ECEF] w-14 h-14 justify-center items-center rounded-e-lg">
-                        <LockIcon sx={{ fontSize: '30px', color: '#495057' }} />
+                    <span className="border-2 border-gray-300 inline-flex bg-[#E9ECEF] w-10 h-10 justify-center items-center rounded-e-lg">
+                        <LockIcon sx={{ fontSize: '25px', color: '#495057' }} />
                     </span>
                 </div>
                 <div className="flex">
                     <TextField
-                        sx={{ width: '88%', padding: 0 }}
+                        sx={{ width: '88%', padding: 0}}
                         id="outlined-basic"
                         label="New Password Confirmation"
+                        size="small"
                         onChange={(e) => setconfpass(e.target.value)}
                         variant="outlined" />
-                    <span className="border-2 border-gray-300 inline-flex bg-[#E9ECEF] w-14 h-14 justify-center items-center rounded-e-lg">
-                        <LockIcon sx={{ fontSize: '30px', color: '#495057' }} />
+                    <span className="border-2 border-gray-300 inline-flex bg-[#E9ECEF] w-10 h-10 justify-center items-center rounded-e-lg">
+                        <LockIcon sx={{ fontSize: '25px', color: '#495057' }} />
                     </span>
                 </div>
             </Box>

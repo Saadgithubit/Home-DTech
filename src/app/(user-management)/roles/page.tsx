@@ -3,6 +3,7 @@ import InnerHeader from "@/components/innerheader";
 import NavContainer from "@/components/navcontainer";
 import { RoleList } from "@/components/pagelists";
 import { Box, Typography } from "@mui/material";
+import Link from "next/link";
 
 export default function Roles() {
     const list = [
@@ -23,7 +24,9 @@ export default function Roles() {
             <div>
             <span className="w-full inline-flex p-2 text-xl items-center justify-between">
                 <h1>Role Management</h1>
+                <Link href={'roles/createroles'}>
                 <ButtonComponent title={'Add Role'} />
+                </Link>
             </span>
             <NavContainer/>
             <InnerHeader title={'Roles List'}/>
