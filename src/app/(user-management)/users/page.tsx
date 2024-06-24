@@ -30,7 +30,7 @@ export default function Users() {
                 <h1>Users</h1>
                 <ButtonComponent title={'Add User'} />
             </span>
-            {/* <NavContainer /> */}
+            <NavContainer />
             <InnerHeader title={'Users List'} />
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2 }}>
                 <UserList list={list} />

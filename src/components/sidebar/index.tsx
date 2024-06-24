@@ -24,9 +24,9 @@ export default function Sidebar() {
       <Drawer sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box', backgroundColor: '#343A40', color: 'white' } }} variant="permanent" anchor="left">
         <div className="flex items-center">
           <Image className="w-8 h-8 mx-2" alt="logo" src={logo} />
-          <div className="flex justify-center items-center text-left p-4 mr-4">
+          <div className="flex justify-center items-center text-left p-4 mr-3">
             <Link href="/">
-              <p className="mr-10" style={{ opacity: 1 }}>Home DTech</p>
+              <p className="mr-10" style={{ opacity: 1,width: '120px' }}>Home DTech</p>
             </Link>
           </div>
         </div>

@@ -58,7 +58,7 @@ function DrawerList({ collapseIndex, handleCollapse, isExpanded }: DrawerListPro
                 return (
                     <ListItemIcon key={index1} sx={{ display: 'block' }}>
                         {nested
-                            ? (<ListItemButton onClick={() => handleCollapse(index1)} sx={{ minHeight: 48, display: 'flex' }}>
+                            ? (<ListItemButton onClick={() => handleCollapse(index1)} sx={{ minHeight: 48, display: 'flex',padding: '0 15px'}}>
                                 <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
                                     {font && <FontAwesomeIcon className="text-gray-500" icon={font} />}
                                 </ListItemIcon>
@@ -81,7 +81,7 @@ function DrawerList({ collapseIndex, handleCollapse, isExpanded }: DrawerListPro
                                 }
                             </ListItemButton>)
                             : (<Link href={name.replace(/\s/g, '-').toLowerCase()}>
-                                <ListItemButton sx={{ minHeight: 48, display: 'flex' }}>
+                                <ListItemButton sx={{ minHeight: 48, display: 'flex',padding: '0 15px' }}>
                                     <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
                                         {font && <FontAwesomeIcon className="text-gray-500 text-lg" icon={font} />}
                                     </ListItemIcon>
@@ -91,7 +91,7 @@ function DrawerList({ collapseIndex, handleCollapse, isExpanded }: DrawerListPro
                         {nestedItems && <Collapse in={collapseIndex === index1} timeout="auto" unmountOnExit>
                             {nestedItems.map((item2, index2) => (
                                 <Link key={index2} href={`/${item2.replace(/\s/g, '-').toLocaleLowerCase()}`}>
-                                    <ListItemButton sx={{ minHeight: 48, justifyContent: 'initial', px: 2.5 }}>
+                                    <ListItemButton sx={{ minHeight: 30, justifyContent: 'initial', px: 2.5, }}>
                                         <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
                                             <FontAwesomeIcon className="text-gray-500 text-xs" icon={faCircle} />
                                         </ListItemIcon>

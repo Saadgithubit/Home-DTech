@@ -1,9 +1,24 @@
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import NavContainer from "@/components/navcontainer";
+import { RoleList } from "@/components/pagelists";
 import { Box, Typography } from "@mui/material";
 
 export default function Roles() {
+    const list = [
+        {id: 1,name: 'Admin',},
+        {id: 2,name: 'User/Landlords',},
+        {id: 3,name: 'Supplier',},
+        {id: 4,name: 'Engineer',},
+        {id: 5,name: 'User/Region Manager',},
+        {id: 6,name: 'Owner Association',},
+        {id: 7,name: 'Tenants',},
+        {id: 8,name: 'Test Admin Role',},
+        {id: 9,name: 'Test Admin Role 02',},
+        {id: 10,name: 'Engineering Director',},
+        {id: 11,name: 'Operations',},
+        {id: 12,name: 'Accounts',},
+    ]
     return (
             <div>
             <span className="w-full inline-flex p-2 text-xl items-center justify-between">
@@ -16,20 +31,7 @@ export default function Roles() {
                 component="main"
                 sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2,  }}
             >
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
+            <RoleList list={list}/>
             </Box>
             </div>
     )
