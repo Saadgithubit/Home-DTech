@@ -32,7 +32,9 @@ export default function Sidebar() {
         </div>
         <Divider />
         <List>
+          <Link href={'profile'}>
           <ListItemText primary="Areeb Vohra" sx={{ opacity: 1, marginLeft: 3 }} />
+          </Link>
         </List>
         <Divider />
         <DrawerList isExpanded={true} collapseIndex={collapseIndex} handleCollapse={handleCollapse} />
