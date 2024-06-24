@@ -1,14 +1,10 @@
-import { Box, TextField } from "@mui/material";
+import ProfileData from ".";
 
 export default function Profile() {
     return (
-        <div>
-                <h1>My Profile</h1>
-            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2 }}>
-                <span>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-                </span>
-            </Box>
+        <div className="p-2 space-y-3">
+            <h1 className="text-3xl">My Profile</h1>
+           <ProfileData />
         </div>
     )
 }
