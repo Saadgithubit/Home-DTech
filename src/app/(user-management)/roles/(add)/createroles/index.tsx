@@ -163,7 +163,7 @@ export default function AddRoles() {
                     {roleList.map(( item , index ) => {
                         const { name } = item
                         return(
-                            <div className="flex items-center w-[30%]">
+                            <div key={index} className="flex items-center w-[30%]">
                             <Checkbox
                                 sx={{ border: '1px solid black', borderRadius: '1px', width: '20px', height: '22px' }}
                                 icon={<AddIcon />}
@@ -175,7 +175,7 @@ export default function AddRoles() {
                                     checked={checked}
                                     onChange={handleChange}
                                     inputProps={{ 'aria-label': 'controlled' }} />
-                                <p className="text-sm">{name}</p>
+                                <p className="text-sm font-semibold">{name}</p>
                             </span>
                         </div>
                         )
