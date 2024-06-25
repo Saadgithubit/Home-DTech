@@ -1,6 +1,6 @@
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
-import NavContainer from "@/components/navcontainer";
+import FilterSection from "@/components/filtersection";
 import { RoleList } from "@/components/pagelists";
 import { Box } from "@mui/material";
 import Link from "next/link";
@@ -22,14 +22,14 @@ export default function Roles() {
     ]
     return (
         <div>
-            <span className="w-full inline-flex p-2 text-xl items-center justify-between">
+            <span className="w-full inline-flex py-2 text-xl items-center justify-between">
                 <h1>Role Management</h1>
                 <Link href={'roles/add'}>
                     <ButtonComponent title={'Add Role'} />
                 </Link>
             </span>
-            <NavContainer />
-            <InnerHeader title={'Roles List'} />
+            {/* <FilterSection /> */}
+            <InnerHeader title={'Role List'} />
             <Box
                 component="main"
                 sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}

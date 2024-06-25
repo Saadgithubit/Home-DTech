@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Checkbox, TextField } from "@mui/material";
+import { Box, Checkbox, TextField, IconButton } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useState } from "react";
@@ -140,10 +140,49 @@ export default function AddRoles() {
             nestedRoleList: ['User-List', 'User-Create', 'User-Edit', 'User-Delete']
         },
     ]
-    const [checked, setChecked] = useState(false);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setChecked(event.target.checked);
+    const [checkedAll, setCheckedAll] = useState(false);
+    const [expandedIndexes, setExpandedIndexes] = useState<number[]>([]);
+    const [checkedRoles, setCheckedRoles] = useState<{ [key: string]: boolean }>({});
+
+    const handleChangeAll = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const isChecked = event.target.checked;
+        setCheckedAll(isChecked);
+        const newCheckedRoles: { [key: string]: boolean } = {};
+        roleList.forEach(role => {
+            newCheckedRoles[role.name] = isChecked;
+            role.nestedRoleList.forEach(nestedRole => {
+                newCheckedRoles[nestedRole] = isChecked;
+            });
+        });
+        setCheckedRoles(newCheckedRoles);
+    };
+
+    const handleRoleChange = (role: string, nestedRoles: string[]) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        const isChecked = event.target.checked;
+        setCheckedRoles(prevState => {
+            const newCheckedRoles = { ...prevState, [role]: isChecked };
+            nestedRoles.forEach(nestedRole => {
+                newCheckedRoles[nestedRole] = isChecked;
+            });
+            return newCheckedRoles;
+        });
+    };
+
+    const handleNestedRoleChange = (nestedRole: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        const isChecked = event.target.checked;
+        setCheckedRoles(prevState => ({
+            ...prevState,
+            [nestedRole]: isChecked
+        }));
+    };
+
+    const handleToggle = (index: number) => {
+        if (expandedIndexes.includes(index)) {
+            setExpandedIndexes(expandedIndexes.filter(i => i !== index));
+        } else {
+            setExpandedIndexes([...expandedIndexes, index]);
+        }
     };
 
     return (
@@ -155,36 +194,55 @@ export default function AddRoles() {
                     <TextField sx={{ width: '100%', padding: 0 }} id="outlined-basic" label="Name" variant="outlined" size="small" />
                     <div className="flex items-center">
                         <Checkbox
-                            checked={checked}
-                            onChange={handleChange}
+                            checked={checkedAll}
+                            onChange={handleChangeAll}
                             inputProps={{ 'aria-label': 'controlled' }} />
                         <p>Check All</p>
                     </div>
-                    <p className="text-2xl font-semibold">Permissons:</p>
+                    <p className="text-2xl font-semibold">Permissions:</p>
                     <div className="flex flex-wrap justify-between">
                         {roleList.map((item, index) => {
-                            const { name } = item
+                            const { name, nestedRoleList } = item;
+                            const isExpanded = expandedIndexes.includes(index);
+                            const isRoleChecked = !!checkedRoles[name];
+
                             return (
-                                <div key={index} className="flex items-center w-[30%]">
-                                    <Checkbox
-                                        sx={{ border: '1px solid black', borderRadius: '1px', width: '20px', height: '22px' }}
-                                        icon={<AddIcon />}
-                                        checkedIcon={<RemoveIcon />}
-                                        inputProps={{ 'aria-label': 'controlled' }}
-                                    />
-                                    <span className="flex items-center">
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            inputProps={{ 'aria-label': 'controlled' }} />
-                                        <p className="text-sm font-semibold">{name}</p>
-                                    </span>
+                                <div key={index} className="w-[30%]">
+                                    <div className="flex items-center w-full">
+                                        <IconButton 
+                                        sx={{border: '1px solid black', width: '20px', height: '20px',borderRadius: 0}} 
+                                        onClick={() => handleToggle(index)}>
+                                            {isExpanded ? <RemoveIcon /> : <AddIcon />}
+                                        </IconButton>
+                                        <span className="flex items-center">
+                                            <Checkbox
+                                                checked={isRoleChecked}
+                                                onChange={handleRoleChange(name, nestedRoleList)}
+                                                inputProps={{ 'aria-label': 'controlled' }} />
+                                            <p className="text-sm font-semibold">{name}</p>
+                                        </span>
+                                    </div>
+                                    {isExpanded && nestedRoleList.map((nestedItem, nestedIndex) => {
+                                        const isNestedRoleChecked = !!checkedRoles[nestedItem];
+                                        return (
+                                            <div key={nestedIndex} className="flex flex-col p-2">
+                                                <span className="inline-flex space-x-2 pl-16 items-center">
+                                                    <Checkbox
+                                                        sx={{ width: '20px', height: '22px' }}
+                                                        checked={isNestedRoleChecked}
+                                                        onChange={handleNestedRoleChange(nestedItem)}
+                                                        inputProps={{ 'aria-label': 'controlled' }} />
+                                                    <p className="text-sm font-semibold">{nestedItem}</p>
+                                                </span>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
-                            )
+                            );
                         })}
                     </div>
                 </div>
             </Box>
         </div>
-    )
+    );
 }

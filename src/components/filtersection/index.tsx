@@ -1,6 +1,6 @@
 import ButtonComponent from "../button";
 
-export default function NavContainer() {
+export default function FilterSection() {
     return (
         <div className="flex justify-between bg-[#F8F9FA] rounded-md py-8 px-2 my-2 border-2 flex-wrap">
             <span className="inline-flex flex-col space-y-2 w-1/3">

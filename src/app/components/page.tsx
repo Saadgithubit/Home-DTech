@@ -1,6 +1,6 @@
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
-import NavContainer from "@/components/navcontainer";
+import NavContainer from "@/components/filtersection";
 import { Box, Typography } from "@mui/material";
 
 export default function Components() {
