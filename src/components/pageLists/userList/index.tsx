@@ -4,6 +4,7 @@ import { Delete as DeleteIcon, Create as CreateIcon } from '@mui/icons-material'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Pagination from '@/components/pagination';
 import { ChangeEvent } from 'react';
+import { Box } from '@mui/material';
 
 
 interface UserListProps {
@@ -34,30 +35,33 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
     const totalPages = Math.ceil(list.length / itemsPerPage);
 
     return (
-        <div>
+        <div className='py-2'>
             <div className="pb-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
             </div>
-            <ul className="flex border-b-2 py-4 px-2 text-sm font-semibold justify-between">
-                <li className='w-28'>Name</li>
-                <li className='w-28'>User Name</li>
-                <li className='w-44'>Email</li>
-                <li className='w-28'>Role</li>
-                <li className='w-36'>Account ID</li>
-                <li className='w-28'>Status</li>
-                <li>Actions</li>
-            </ul>
+            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default'}}>
+                <table className='w-full'>
+            <tr className="border-b-2 text-xs font-semibold">
+                <th className='text-left p-4'>Name</th>
+                <th className='text-left py-4'>User Name</th>
+                <th className='text-left py-4'>Email</th>
+                <th className='text-left py-4'>Role</th>
+                <th className='text-left py-4'>Account ID</th>
+                <th className='text-left py-4'>Status</th>
+                <th>Actions</th>
+            </tr>
             {displayedList.map((item, index) => {
                 const { name, userName, email, role } = item
                 return (
-                    <ul key={index} className="flex border-b-2 py-4 px-2 text-xs justify-between items-center">
-                        <li className='w-28'>{name}</li>
-                        <li className='w-28'>{userName}</li>
-                        <li className='w-44'>{email}</li>
-                        <li className='w-28'>{role}</li>
-                        <li className='w-36'></li>
-                        <li className='w-28 px-3'><span className="inline-block w-3 h-3 rounded-full bg-[#28A745]"></span></li>
-                        <li className='flex'>
+                    <tr key={index} className="border-b-2 text-xs">
+                        <td className='p-4'>{name}</td>
+                        <td className='py-4'>{userName}</td>
+                        <td className='py-4'>{email}</td>
+                        <td className='py-4'>{role}</td>
+                        <td className='py-4'></td>
+                        <td className='p-4'><span className="inline-block w-3 h-3 rounded-full bg-[#28A745]"></span></td>
+                        <td className='text-center py-4'>
+                            <span className='inline-flex'>
                             <button className="p-2 rounded-s rounded-e text-white bg-[#0069D9]">
                                 <CreateIcon />
                             </button>
@@ -65,10 +69,13 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
                             <button className="p-2 rounded-s rounded-e text-white bg-[#C82333]">
                                 <DeleteIcon />
                             </button>
-                        </li>
-                    </ul>
+                            </span>
+                        </td>
+                    </tr>
                 )
             })}
+            </table>
+            </Box>
             <div className="pt-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
             </div>

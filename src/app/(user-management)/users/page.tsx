@@ -1,12 +1,14 @@
-import React from 'react';
-import { Box } from "@mui/material";
+import { Inter } from 'next/font/google'
 
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
-import NavContainer from "@/components/filtersection";
 import { UserList } from '@/components/pagelists';
+import FilterSection from '@/components/filtersection';
+
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Users() {
+
     const list = [
         { name: "Anil Kumar", userName: "Anil Kuman", email: "accounts@leakdtech.com", role: "Accounts" },
         { name: "Antoinette Caruana", userName: "Antoinette	", email: "antoinette@leakdtech.com	", role: "Operations" },
@@ -25,16 +27,14 @@ export default function Users() {
     ]
 
     return (
-        <div>
+        <div className={inter.className}>
             <span className="flex py-2 text-xl items-center justify-between">
-                <h1>Users</h1>
+                <h1 className='font-medium'>Users</h1>
                 <ButtonComponent title={'Add User'} />
             </span>
-            <NavContainer />
+            <FilterSection />
             <InnerHeader title={'Users List'} />
-            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2 }}>
                 <UserList list={list} />
-            </Box>
         </div>
     )
 }
