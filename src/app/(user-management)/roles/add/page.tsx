@@ -1,11 +1,20 @@
 'use client'
 
 import { Box, Checkbox, TextField, IconButton } from "@mui/material";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { useState } from "react";
+import { useState , useEffect } from "react";
+import ParentCheckbox from "@/components/checkbox";
 
 export default function AddRoles() {
+    useEffect(() => {
+        AOS.init({
+             duration: 800,
+             once: false,
+           })
+     }, [])
     const roleList = [
         {
             name: 'Amc-Quotation',
@@ -186,8 +195,8 @@ export default function AddRoles() {
     };
 
     return (
-        <div className="p-2">
-            <h1 className="text-2xl">Roles</h1>
+        <div className="p-2 ">
+            <h1 className="text-2xl my-4">Roles</h1>
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}>
                 <div className="flex-col space-y-2">
                     <p>Name</p>
@@ -221,11 +230,12 @@ export default function AddRoles() {
                                                 inputProps={{ 'aria-label': 'controlled' }} />
                                             <p className="text-sm font-semibold">{name}</p>
                                         </span>
+                                        {/* <ParentCheckbox/> */}
                                     </div>
                                     {isExpanded && nestedRoleList.map((nestedItem, nestedIndex) => {
                                         const isNestedRoleChecked = !!checkedRoles[nestedItem];
                                         return (
-                                            <div key={nestedIndex} className="flex flex-col p-2">
+                                            <div key={nestedIndex} data-aos="fade-right" className="flex flex-col p-2">
                                                 <span className="inline-flex space-x-2 pl-16 items-center">
                                                     <Checkbox
                                                         sx={{ width: '20px', height: '22px' }}
