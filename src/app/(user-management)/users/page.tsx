@@ -2,8 +2,8 @@ import { Inter } from 'next/font/google'
 
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
-import { UserList } from '@/components/pagelists';
 import FilterSection from '@/components/filtersection';
+import UserList from '@/components/pageLists/userList';
 
 const inter = Inter({ subsets: ['latin'] })
 

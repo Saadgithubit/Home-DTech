@@ -1,8 +1,7 @@
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
-import FilterSection from "@/components/filtersection";
-import { RoleList } from "@/components/pagelists";
 import Link from "next/link";
+import RoleList from "@/components/pageLists/roleList";
 
 export default function Roles() {
     const list = [
@@ -27,7 +26,6 @@ export default function Roles() {
                     <ButtonComponent title={'Add Role'} />
                 </Link>
             </span>
-            {/* <FilterSection /> */}
             <InnerHeader title={'Role List'} />
             <RoleList list={list} />
         </div>

@@ -1,20 +1,8 @@
-'use client'
-
-import { Box, Checkbox, TextField, IconButton } from "@mui/material";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { useState , useEffect } from "react";
-import ParentCheckbox from "@/components/checkbox";
+import { Box, TextField,} from "@mui/material";
+import DisplayedList from "@/components/checkbox";
 
 export default function AddRoles() {
-    useEffect(() => {
-        AOS.init({
-             duration: 800,
-             once: false,
-           })
-     }, [])
+    
     const roleList = [
         {
             name: 'Amc-Quotation',
@@ -150,50 +138,6 @@ export default function AddRoles() {
         },
     ]
 
-    const [checkedAll, setCheckedAll] = useState(false);
-    const [expandedIndexes, setExpandedIndexes] = useState<number[]>([]);
-    const [checkedRoles, setCheckedRoles] = useState<{ [key: string]: boolean }>({});
-
-    const handleChangeAll = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const isChecked = event.target.checked;
-        setCheckedAll(isChecked);
-        const newCheckedRoles: { [key: string]: boolean } = {};
-        roleList.forEach(role => {
-            newCheckedRoles[role.name] = isChecked;
-            role.nestedRoleList.forEach(nestedRole => {
-                newCheckedRoles[nestedRole] = isChecked;
-            });
-        });
-        setCheckedRoles(newCheckedRoles);
-    };
-
-    const handleRoleChange = (role: string, nestedRoles: string[]) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        const isChecked = event.target.checked;
-        setCheckedRoles(prevState => {
-            const newCheckedRoles = { ...prevState, [role]: isChecked };
-            nestedRoles.forEach(nestedRole => {
-                newCheckedRoles[nestedRole] = isChecked;
-            });
-            return newCheckedRoles;
-        });
-    };
-
-    const handleNestedRoleChange = (nestedRole: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        const isChecked = event.target.checked;
-        setCheckedRoles(prevState => ({
-            ...prevState,
-            [nestedRole]: isChecked
-        }));
-    };
-
-    const handleToggle = (index: number) => {
-        if (expandedIndexes.includes(index)) {
-            setExpandedIndexes(expandedIndexes.filter(i => i !== index));
-        } else {
-            setExpandedIndexes([...expandedIndexes, index]);
-        }
-    };
-
     return (
         <div className="p-2 ">
             <h1 className="text-2xl my-4">Roles</h1>
@@ -201,56 +145,7 @@ export default function AddRoles() {
                 <div className="flex-col space-y-2">
                     <p>Name</p>
                     <TextField sx={{ width: '100%', padding: 0 }} id="outlined-basic" label="Name" variant="outlined" size="small" />
-                    <div className="flex items-center">
-                        <Checkbox
-                            checked={checkedAll}
-                            onChange={handleChangeAll}
-                            inputProps={{ 'aria-label': 'controlled' }} />
-                        <p>Check All</p>
-                    </div>
-                    <p className="text-2xl font-semibold">Permissions:</p>
-                    <div className="flex flex-wrap justify-between">
-                        {roleList.map((item, index) => {
-                            const { name, nestedRoleList } = item;
-                            const isExpanded = expandedIndexes.includes(index);
-                            const isRoleChecked = !!checkedRoles[name];
-
-                            return (
-                                <div key={index} className="w-[30%]">
-                                    <div className="flex items-center w-full">
-                                        <IconButton 
-                                        sx={{border: '1px solid black', width: '20px', height: '20px',borderRadius: 0}} 
-                                        onClick={() => handleToggle(index)}>
-                                            {isExpanded ? <RemoveIcon /> : <AddIcon />}
-                                        </IconButton>
-                                        <span className="flex items-center">
-                                            <Checkbox
-                                                checked={isRoleChecked}
-                                                onChange={handleRoleChange(name, nestedRoleList)}
-                                                inputProps={{ 'aria-label': 'controlled' }} />
-                                            <p className="text-sm font-semibold">{name}</p>
-                                        </span>
-                                        {/* <ParentCheckbox/> */}
-                                    </div>
-                                    {isExpanded && nestedRoleList.map((nestedItem, nestedIndex) => {
-                                        const isNestedRoleChecked = !!checkedRoles[nestedItem];
-                                        return (
-                                            <div key={nestedIndex} data-aos="fade-right" className="flex flex-col p-2">
-                                                <span className="inline-flex space-x-2 pl-16 items-center">
-                                                    <Checkbox
-                                                        sx={{ width: '20px', height: '22px' }}
-                                                        checked={isNestedRoleChecked}
-                                                        onChange={handleNestedRoleChange(nestedItem)}
-                                                        inputProps={{ 'aria-label': 'controlled' }} />
-                                                    <p className="text-sm font-semibold">{nestedItem}</p>
-                                                </span>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            );
-                        })}
-                    </div>
+                    <DisplayedList roleList={roleList} />
                 </div>
             </Box>
         </div>
