@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import FilterSection from '@/components/filtersection';
-import UserList from '@/components/pageLists/userList';
+import { UserList } from '@/components/pageLists';
 
 const inter = Inter({ subsets: ['latin'] })
 

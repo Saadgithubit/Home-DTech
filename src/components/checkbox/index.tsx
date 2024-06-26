@@ -11,7 +11,7 @@ interface DisplayedListProps {
 
 interface Roll {
   name: string,
-  nestedRoleList: []
+  nestedRoleList: string[]
 }
 
 const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
