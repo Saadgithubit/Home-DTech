@@ -2,36 +2,25 @@ import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import NavContainer from "@/components/filtersection";
 import { Box, Typography } from "@mui/material";
+import BuildingList from "@/components/pageLists/buildingLists";
 
 
 export default function Building() {
+    const list = [{ name: 'abc' }]
     return (
-            <div>
+        <div>
             <span className="flex p-2 text-xl items-center justify-between">
                 <h1>Buildings</h1>
                 <ButtonComponent title={'Add Building'} />
             </span>
-            <NavContainer/>
-            <InnerHeader title={'Building List'}/>
+            <NavContainer />
+            <InnerHeader title={'Building List'} />
             <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2,  }}
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}
             >
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
+                <BuildingList list={list} />
             </Box>
-            </div>
+        </div>
     )
 }

@@ -34,7 +34,7 @@ export default function Users() {
             </span>
             <FilterSection />
             <InnerHeader title={'Users List'} />
-                <UserList list={list} />
+            <UserList list={list} />
         </div>
     )
 }
