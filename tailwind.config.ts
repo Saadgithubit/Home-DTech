@@ -8,6 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        fade: 'fadeOut 1s ease-in-out',
+      },
+
+      // that is actual animation
+      keyframes: theme => ({
+        fadeOut: {
+          '0%': { paddingLeft: '0' },
+          '100%': { paddingLeft: '-50px' },
+        },
+      }),
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

@@ -1,6 +1,8 @@
 'use client'
-import React from 'react'
+
+import React from 'react';
 import { Delete as DeleteIcon, Create as CreateIcon } from '@mui/icons-material'
+import { Box } from "@mui/material";
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Pagination from '@/components/pagination';
 import { ChangeEvent } from 'react';
@@ -11,8 +13,8 @@ interface RoleListProps {
 }
 
 interface RoleList {
-    id: number,
-    name: string,
+    id: number;
+    name: string;
 }
 
 const RoleList: React.FC<RoleListProps> = ({ list, itemsPerPage = 6 }) => {
@@ -32,33 +34,39 @@ const RoleList: React.FC<RoleListProps> = ({ list, itemsPerPage = 6 }) => {
 
 
     return (
-        <div>
+        <div className='p-2'>
             <div className="pb-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
             </div>
-            <ul className="flex border-b-2 py-4 px-2 text-xs font-semibold justify-around">
-                <li className='w-28'>ID</li>
-                <li className='w-28'>Name</li>
-                <li className='w-28 pl-9'>Action</li>
-            </ul>
-            {displayedList.map((item , index)=>{
-                const { id , name } = item
-                return(
-                    <ul key={index} className="flex border-b-2 py-4 px-2 text-xs justify-around items-center">
-                        <li className='w-28'>{id}</li>
-                        <li className='w-28 mr-6'>{name}</li>
-                        <li className='flex'>
-                            <button className="p-2 rounded-s rounded-e text-white bg-[#0069D9]">
-                                <CreateIcon />
-                            </button>
-                            <div className='pl-1' />
-                            <button className="p-2 rounded-s rounded-e text-white bg-[#C82333]">
-                                <DeleteIcon />
-                            </button>
-                        </li>
-                    </ul>
-                )
-            })}
+            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
+                <table className='w-full'>
+                    <tr className='border-b-2 text-xs'>
+                        <th className='py-4 px-4 text-left'>ID</th>
+                        <th className='py-4 px-16 text-left'>Name</th>
+                        <th className='text-left py-4'>Action</th>
+                    </tr>
+                    {displayedList.map((item, index) => {
+                        const { id, name } = item
+                        return (
+                            <tr key={index} className="border-b-2 text-xs">
+                                <td className='text-left px-4 py-2'>{id}</td>
+                                <td className='text-left py-2 px-16'>{name}</td>
+                                <td className='text-left py-2'>
+                                    <span className='flex'>
+                                        <button className="p-2 rounded-s rounded-e text-white bg-[#0069D9]">
+                                            <CreateIcon />
+                                        </button>
+                                        <div className='pl-1' />
+                                        <button className="p-2 rounded-s rounded-e text-white bg-[#C82333]">
+                                            <DeleteIcon />
+                                        </button>
+                                    </span>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </table>
+            </Box>
             <div className="pt-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
             </div>

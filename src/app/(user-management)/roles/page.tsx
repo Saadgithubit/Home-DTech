@@ -1,9 +1,7 @@
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
-import NavContainer from "@/components/navcontainer";
-import { RoleList } from "@/components/pagelists";
-import { Box } from "@mui/material";
 import Link from "next/link";
+import { RoleList } from "@/components/pageLists";
 
 export default function Roles() {
     const list = [
@@ -22,20 +20,14 @@ export default function Roles() {
     ]
     return (
         <div>
-            <span className="w-full inline-flex p-2 text-xl items-center justify-between">
-                <h1>Role Management</h1>
+            <span className="w-full inline-flex py-2 text-xl items-center justify-between">
+                <h1 className="font-san">Role Management</h1>
                 <Link href={'roles/add'}>
                     <ButtonComponent title={'Add Role'} />
                 </Link>
             </span>
-            <NavContainer />
-            <InnerHeader title={'Roles List'} />
-            <Box
-                component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}
-            >
-                <RoleList list={list} />
-            </Box>
+            <InnerHeader title={'Role List'} />
+            <RoleList list={list} />
         </div>
     )
 }

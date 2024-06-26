@@ -1,11 +1,8 @@
-'use client'
-
-import { Box, Checkbox, TextField } from "@mui/material";
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { useState } from "react";
+import { Box, TextField,} from "@mui/material";
+import DisplayedList from "@/components/checkbox";
 
 export default function AddRoles() {
+    
     const roleList = [
         {
             name: 'Amc-Quotation',
@@ -140,51 +137,17 @@ export default function AddRoles() {
             nestedRoleList: ['User-List', 'User-Create', 'User-Edit', 'User-Delete']
         },
     ]
-    const [checked, setChecked] = useState(false);
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setChecked(event.target.checked);
-    };
 
     return (
-        <div className="p-2">
-            <h1 className="text-2xl">Roles</h1>
+        <div className="p-2 ">
+            <h1 className="text-2xl my-4">Roles</h1>
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}>
                 <div className="flex-col space-y-2">
                     <p>Name</p>
                     <TextField sx={{ width: '100%', padding: 0 }} id="outlined-basic" label="Name" variant="outlined" size="small" />
-                    <div className="flex items-center">
-                        <Checkbox
-                            checked={checked}
-                            onChange={handleChange}
-                            inputProps={{ 'aria-label': 'controlled' }} />
-                        <p>Check All</p>
-                    </div>
-                    <p className="text-2xl font-semibold">Permissons:</p>
-                    <div className="flex flex-wrap justify-between">
-                        {roleList.map((item, index) => {
-                            const { name } = item
-                            return (
-                                <div key={index} className="flex items-center w-[30%]">
-                                    <Checkbox
-                                        sx={{ border: '1px solid black', borderRadius: '1px', width: '20px', height: '22px' }}
-                                        icon={<AddIcon />}
-                                        checkedIcon={<RemoveIcon />}
-                                        inputProps={{ 'aria-label': 'controlled' }}
-                                    />
-                                    <span className="flex items-center">
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            inputProps={{ 'aria-label': 'controlled' }} />
-                                        <p className="text-sm font-semibold">{name}</p>
-                                    </span>
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <DisplayedList roleList={roleList} />
                 </div>
             </Box>
         </div>
-    )
+    );
 }
