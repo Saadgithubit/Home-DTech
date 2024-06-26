@@ -1,4 +1,4 @@
-import UserList from "./userlist";
-import RoleList from "./rolelist";
+import UserList from "./userList";
+import RoleList from "./roleList";
 
 export { UserList, RoleList };
