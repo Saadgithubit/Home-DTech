@@ -1,7 +1,7 @@
 import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import Link from "next/link";
-import RoleList from "@/components/pageLists/roleList";
+import { RoleList } from "@/components/pageLists";
 
 export default function Roles() {
     const list = [
