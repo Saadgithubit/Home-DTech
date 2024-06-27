@@ -18,8 +18,8 @@ export default function FilterSection() {
                 <input placeholder="Address" className="border-2 text-xs w-[90%] p-2" />
             </span>
             <span className="w-full justify-end inline-flex pr-9 p-2 my-2 space-x-2">
-                <ButtonComponent title={'Reset'} />
-                <ButtonComponent title={'Filter'} />
+                <ButtonComponent title={'Reset'}  />
+                <ButtonComponent title={'Filter'} bgColor={'#5A6268'} />
             </span>
         </div>
     )
