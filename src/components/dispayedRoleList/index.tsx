@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react';
-import { Box, Checkbox, IconButton } from '@mui/material';
+import { Box, Checkbox, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -68,7 +68,7 @@ const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
           checked={checkedAll}
           onChange={handleCheckAll}
           inputProps={{ 'aria-label': 'controlled' }} />
-        <p>Check All</p>
+        <p className='font-sans font-bold text-[#212529]'>Check All</p>
       </div>
       <p className="text-2xl font-semibold">Permissions:</p>
       <div className="flex flex-wrap justify-between">
@@ -77,7 +77,7 @@ const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
           const isExpand = expandedIndexes.includes(roleIndex);
           const isParentChecked = checked[roleIndex].every(check => check);
           const isParentIndeterminate = !isParentChecked && checked[roleIndex].some(check => check);
-          
+
           return (
             <div key={roleIndex} className="w-[30%]">
               <div className="flex space-x-1 items-center w-full">
@@ -87,7 +87,7 @@ const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
                   {isExpand ? <RemoveIcon /> : <AddIcon />}
                 </IconButton>
                 <FormControlLabel
-                  label={name}
+                  label={<Typography sx={{ fontFamily: 'sans-serif', fontWeight: 'bold', color: 'black', fontSize: '12px' }}>{name}</Typography>}
                   control={
                     <Checkbox
                       checked={isParentChecked || checkedAll}
@@ -102,7 +102,7 @@ const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
                   {nestedRoleList.map((nestedRole, nestedIndex) => (
                     <FormControlLabel
                       key={nestedIndex}
-                      label={nestedRole}
+                      label={<Typography sx={{ fontFamily: 'sans-serif', fontWeight: 'bold', color: 'black', fontSize: '12px', margin: 0 }}>{nestedRole}</Typography>}
                       control={
                         <Checkbox
                           checked={checked[roleIndex][nestedIndex] || checkedAll}
