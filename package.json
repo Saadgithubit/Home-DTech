@@ -17,14 +17,12 @@
     "@mui/icons-material": "^5.15.19",
     "@mui/material": "^5.15.19",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
-    "aos": "^2.3.4",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
-    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
