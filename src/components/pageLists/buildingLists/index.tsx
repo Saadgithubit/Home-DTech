@@ -1,6 +1,7 @@
 'use client'
 import { Box } from '@mui/material';
 import React from 'react';
+import { Delete as DeleteIcon, Create as CreateIcon } from '@mui/icons-material'
 import Image from 'next/image';
 
 interface BuildingListProps {
@@ -35,6 +36,7 @@ const BuildingList: React.FC<BuildingListProps> = ({ list }) => {
                         <th className='text-left py-2'>Length</th>
                         <th className='text-left py-2'>Height</th>
                         <th className='text-left py-2'>Area</th>
+                        <th className='text-center py-2'>Action</th>
                     </tr>
                     {list.map((item, index) => {
                         const { image, User, Name, Type, City, Address, Width, Length, Height, Area } = item
@@ -50,6 +52,17 @@ const BuildingList: React.FC<BuildingListProps> = ({ list }) => {
                                 <td className='text-left py-2'>{Length}</td>
                                 <td className='text-left py-2'>{Height}</td>
                                 <td className='text-left py-2'>{Area}</td>
+                                <td className='text-center py-4'>
+                            <span className='inline-flex border-2'>
+                            <button className="p-2 rounded-s rounded-e text-white bg-[#0069D9]">
+                                <CreateIcon />
+                            </button>
+                            <div className='pl-1' />
+                            <button className="p-2 rounded-s rounded-e text-white bg-[#C82333]">
+                                <DeleteIcon />
+                            </button>
+                            </span>
+                        </td>
                             </tr>
                         )
                     })}
