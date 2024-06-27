@@ -48,10 +48,10 @@ const BuildingList: React.FC<BuildingListProps> = ({ list }) => {
                                 <td className='text-left py-2'>{Type}</td>
                                 <td className='text-left py-2'>{City}</td>
                                 <td className='text-left py-2'>{Address}</td>
-                                <td className='text-left py-2'>{Width}</td>
-                                <td className='text-left py-2'>{Length}</td>
-                                <td className='text-left py-2'>{Height}</td>
-                                <td className='text-left py-2'>{Area}</td>
+                                <td className='text-left p-2'>{Width}</td>
+                                <td className='text-left p-2'>{Length}</td>
+                                <td className='text-left p-2'>{Height}</td>
+                                <td className='text-left p-2'>{Area}</td>
                                 <td className='text-center py-4'>
                             <span className='inline-flex border-2'>
                             <button className="p-2 rounded-s rounded-e text-white bg-[#0069D9]">
