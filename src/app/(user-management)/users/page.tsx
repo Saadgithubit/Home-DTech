@@ -31,9 +31,7 @@ export default function Users() {
         <div className={inter.className}>
             <span className="flex py-2 text-xl items-center justify-between">
                 <h1 className='font-medium'>Users</h1>
-                <Link href={'/users/add'}>
-                <ButtonComponent title={'Add User'} bgColor={'primary'}/>
-                </Link>
+                <ButtonComponent title={'Add User'} />
             </span>
             <FilterSection />
             <InnerHeader title={'Users List'} />
