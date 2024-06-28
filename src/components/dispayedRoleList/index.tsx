@@ -1,18 +1,17 @@
-'use client'
-import * as React from 'react';
-import { Box, Checkbox, IconButton, Typography } from '@mui/material';
+'use client';
+
+import React, { useState } from 'react';
+import { Checkbox, IconButton, Typography, FormControlLabel } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { useState } from "react";
 
 interface DisplayedListProps {
-  roleList: Roll[]
+  roleList: Role[];
 }
 
-interface Roll {
-  name: string,
-  nestedRoleList: string[]
+interface Role {
+  name: string;
+  nestedRoleList: string[];
 }
 
 const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
@@ -25,40 +24,30 @@ const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
   const handleCheckAll = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
     setCheckedAll(isChecked);
-    setChecked(
-      roleList.map(() => [isChecked, isChecked, isChecked, isChecked])
-    );
+    setChecked(roleList.map(() => Array(4).fill(isChecked)));
   };
 
   const handleParentChange = (roleIndex: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
-    const newChecked = checked.map((roleChecks, index) => {
-      if (index === roleIndex) {
-        return roleChecks.map(() => isChecked);
-      }
-      return roleChecks;
-    });
+    const newChecked = checked.map((roleChecks, index) =>
+      index === roleIndex ? roleChecks.map(() => isChecked) : roleChecks
+    );
     setChecked(newChecked);
   };
 
   const handleRoleChange = (roleIndex: number, nestedIndex: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newChecked = checked.map((roleChecks, index) => {
-      if (index === roleIndex) {
-        const updatedRoleChecks = [...roleChecks];
-        updatedRoleChecks[nestedIndex] = event.target.checked;
-        return updatedRoleChecks;
-      }
-      return roleChecks;
-    });
+    const newChecked = checked.map((roleChecks, index) =>
+      index === roleIndex
+        ? roleChecks.map((check, idx) => (idx === nestedIndex ? event.target.checked : check))
+        : roleChecks
+    );
     setChecked(newChecked);
   };
 
   const handleToggle = (index: number) => {
-    if (expandedIndexes.includes(index)) {
-      setExpandedIndexes(expandedIndexes.filter(i => i !== index));
-    } else {
-      setExpandedIndexes([...expandedIndexes, index]);
-    }
+    setExpandedIndexes(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+    );
   };
 
   return (
@@ -67,7 +56,8 @@ const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
         <Checkbox
           checked={checkedAll}
           onChange={handleCheckAll}
-          inputProps={{ 'aria-label': 'controlled' }} />
+          inputProps={{ 'aria-label': 'controlled' }}
+        />
         <p className='font-sans font-bold text-[#212529]'>Check All</p>
       </div>
       <p className="text-2xl font-semibold">Permissions:</p>
@@ -83,7 +73,8 @@ const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
               <div className="flex space-x-1 items-center w-full">
                 <IconButton
                   sx={{ border: '1px solid black', width: '20px', height: '20px', borderRadius: 0 }}
-                  onClick={() => handleToggle(roleIndex)}>
+                  onClick={() => handleToggle(roleIndex)}
+                >
                   {isExpand ? <RemoveIcon /> : <AddIcon />}
                 </IconButton>
                 <FormControlLabel
@@ -114,11 +105,11 @@ const DisplayedList: React.FC<DisplayedListProps> = ({ roleList }) => {
                 </div>
               )}
             </div>
-          )
+          );
         })}
       </div>
     </div>
   );
-}
+};
 
 export default DisplayedList;
