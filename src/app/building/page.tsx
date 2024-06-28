@@ -22,7 +22,7 @@ export default function Building() {
         <div>
             <span className="flex p-2 text-xl items-center justify-between">
                 <h1>Buildings</h1>
-                <ButtonComponent title={'Add Building'} />
+                <ButtonComponent title={'Add Building'} bgColor="primary"/>
             </span>
             <NavContainer />
             <InnerHeader title={'Building List'} />

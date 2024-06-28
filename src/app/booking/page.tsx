@@ -12,7 +12,7 @@ export default function Booking() {
         <div>
             <span className="flex p-2 text-xl items-center justify-between">
                 <h1>Booking</h1>
-                <ButtonComponent title={'Add Booking'} />
+                <ButtonComponent title={'Add Booking'} bgColor="primary"/>
             </span>
             <NavContainer />
             <InnerHeader title={'Booking List'} />
