@@ -11,7 +11,7 @@ export default function Components() {
         <div>
             <span className="w-full inline-flex p-2 text-xl items-center justify-between">
                 <h1>Components</h1>
-                <ButtonComponent title={'Add Product Component'} bgColor="primary"/>
+                <ButtonComponent title={'Add Product Component'} />
             </span>
             <NavContainer />
             <InnerHeader title={'Product Component List'} />

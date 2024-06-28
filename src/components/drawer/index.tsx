@@ -58,11 +58,11 @@ function DrawerList({ collapseIndex, handleCollapse, isExpanded }: DrawerListPro
                 return (
                     <ListItemIcon key={index1} sx={{ display: 'block' }}>
                         {nested
-                            ? (<ListItemButton onClick={() => handleCollapse(index1)} sx={{ minHeight: 48, display: 'flex',padding: '0 15px'}}>
-                                <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
-                                    {font && <FontAwesomeIcon className="text-[#9499A1]" icon={font} />}
+                            ? (<ListItemButton onClick={() => handleCollapse(index1)} sx={{ minHeight: 48, display: 'flex', padding: '0 15px' }}>
+                                <ListItemIcon sx={{ minWidth: 45, textAlign: 'center', justifyContent: 'center' }}>
+                                    {font && <FontAwesomeIcon className="text-[#C2C7D0] text-lg" icon={font} />}
                                 </ListItemIcon>
-                                <ListItemText primary={name} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                <ListItemText primary={name} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px', fontWeight: 'bold' }} />
                                 {!isExpanded
                                     ? <span>
                                         <ChevronLeft sx={{ opacity: 1, color: 'white' }} />
@@ -81,21 +81,21 @@ function DrawerList({ collapseIndex, handleCollapse, isExpanded }: DrawerListPro
                                 }
                             </ListItemButton>)
                             : (<Link href={`/${name.replace(/\s/g, '-').toLowerCase()}`}>
-                                <ListItemButton sx={{ minHeight: 48, display: 'flex',padding: '0 15px' }}>
-                                    <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
-                                        {font && <FontAwesomeIcon className="text-[#9499A1] text-lg" icon={font} />}
+                                <ListItemButton sx={{ minHeight: 48, display: 'flex', padding: '0 15px' }}>
+                                    <ListItemIcon sx={{ minWidth: 45, textAlign: 'center', justifyContent: 'center' }}>
+                                        {font && <FontAwesomeIcon className="text-[#C2C7D0] text-lg" icon={font} />}
                                     </ListItemIcon>
-                                    <ListItemText primary={name} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                    <ListItemText primary={name} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px', fontWeight: 'bold' }} />
                                 </ListItemButton>
                             </Link>)}
                         {nestedItems && <Collapse in={collapseIndex === index1} timeout="auto" unmountOnExit>
                             {nestedItems.map((item2, index2) => (
                                 <Link key={index2} href={`/${item2.replace(/\s/g, '-').toLocaleLowerCase()}`}>
-                                    <ListItemButton sx={{ minHeight: 30, justifyContent: 'initial', px: 2.5, }}>
-                                        <ListItemIcon sx={{ minWidth: 0, mr: 1, textAlign: 'center', justifyContent: 'center' }}>
+                                    <ListItemButton sx={{ minHeight: 30, justifyContent: 'initial', px: 4, }}>
+                                        <ListItemIcon sx={{ minWidth: 45, textAlign: 'center', justifyContent: 'center' }}>
                                             <FontAwesomeIcon className="text-[#9499A1] text-xs" icon={faCircle} />
                                         </ListItemIcon>
-                                        <ListItemText primary={item2} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px' }} />
+                                        <ListItemText primary={item2} sx={{ opacity: 1, color: '#C2C7D0' }} primaryTypographyProps={{ fontSize: '13px', fontWeight: 'bold' }} />
                                     </ListItemButton>
                                 </Link>
                             ))}
