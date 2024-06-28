@@ -31,10 +31,13 @@ export default function Users() {
         <div className={inter.className}>
             <span className="flex py-2 text-xl items-center justify-between">
                 <h1 className='font-medium'>Users</h1>
-                <ButtonComponent title={'Add User'} />
+                <Link href={'/users/add'}>
+                    <ButtonComponent title={'Add User'} />
+                </Link>
             </span>
             <FilterSection />
             <InnerHeader title={'Users List'} />
+
             <UserList list={list} />
         </div>
     )
