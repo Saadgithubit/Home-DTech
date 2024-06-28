@@ -2,13 +2,16 @@ import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import NavContainer from "@/components/filtersection";
 import { Box, Typography } from "@mui/material";
+import ComponentList from "@/components/pageLists/componentLists";
 
 export default function Components() {
+    const list = [{ name: 'abc' }]
+
     return (
         <div>
             <span className="w-full inline-flex p-2 text-xl items-center justify-between">
                 <h1>Components</h1>
-                <ButtonComponent title={'Add Product Component'} />
+                <ButtonComponent title={'Add Product Component'} bgColor="primary"/>
             </span>
             <NavContainer />
             <InnerHeader title={'Product Component List'} />
@@ -30,6 +33,7 @@ export default function Components() {
                     consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
                     sapien faucibus et molestie ac.
                 </Typography>
+                <ComponentList list={list} />
             </Box>
         </div>
     )

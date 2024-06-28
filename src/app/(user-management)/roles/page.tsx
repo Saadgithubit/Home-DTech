@@ -23,7 +23,7 @@ export default function Roles() {
             <span className="w-full inline-flex py-2 text-xl items-center justify-between">
                 <h1 className="font-san">Role Management</h1>
                 <Link href={'roles/add'}>
-                    <ButtonComponent title={'Add Role'} />
+                    <ButtonComponent title={'Add Role'} bgColor="primary" />
                 </Link>
             </span>
             <InnerHeader title={'Role List'} />

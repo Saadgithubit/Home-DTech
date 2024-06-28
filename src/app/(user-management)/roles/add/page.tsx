@@ -1,5 +1,5 @@
 import { Box, TextField,} from "@mui/material";
-import DisplayedList from "@/components/checkbox";
+import DisplayedList from "@/components/dispayedRoleList";
 
 export default function AddRoles() {
     

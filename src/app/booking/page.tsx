@@ -2,20 +2,23 @@ import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import NavContainer from "@/components/filtersection";
 import { Box, Typography } from "@mui/material";
+import BookingList from "@/components/pageLists/bookingLists";
 
 
 export default function Booking() {
+    const list = [{ name: 'abc' }]
+
     return (
-            <div>
+        <div>
             <span className="flex p-2 text-xl items-center justify-between">
                 <h1>Booking</h1>
-                <ButtonComponent title={'Add Booking'} />
+                <ButtonComponent title={'Add Booking'} bgColor="primary"/>
             </span>
-            <NavContainer/>
-            <InnerHeader title={'Booking List'}/>
+            <NavContainer />
+            <InnerHeader title={'Booking List'} />
             <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2,  }}
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}
             >
                 <Typography paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -31,7 +34,8 @@ export default function Booking() {
                     consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
                     sapien faucibus et molestie ac.
                 </Typography>
+                <BookingList list={list} />
             </Box>
-            </div>
+        </div>
     )
 }
