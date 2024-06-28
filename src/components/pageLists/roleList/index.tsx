@@ -40,6 +40,7 @@ const RoleList: React.FC<RoleListProps> = ({ list, itemsPerPage = 6 }) => {
             </div>
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
                 <table className='w-full'>
+                    <tbody>
                     <tr className='border-b-2 text-xs'>
                         <th className='py-4 px-4 text-left'>ID</th>
                         <th className='py-4 px-16 text-left'>Name</th>
@@ -65,6 +66,7 @@ const RoleList: React.FC<RoleListProps> = ({ list, itemsPerPage = 6 }) => {
                             </tr>
                         )
                     })}
+                    </tbody>
                 </table>
             </Box>
             <div className="pt-4">

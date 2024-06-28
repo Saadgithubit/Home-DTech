@@ -4,6 +4,7 @@ import ButtonComponent from "@/components/button";
 import InnerHeader from "@/components/innerheader";
 import FilterSection from '@/components/filtersection';
 import { UserList } from '@/components/pageLists';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,7 +31,9 @@ export default function Users() {
         <div className={inter.className}>
             <span className="flex py-2 text-xl items-center justify-between">
                 <h1 className='font-medium'>Users</h1>
+                <Link href={'/users/add'}>
                 <ButtonComponent title={'Add User'} bgColor={'primary'}/>
+                </Link>
             </span>
             <FilterSection />
             <InnerHeader title={'Users List'} />

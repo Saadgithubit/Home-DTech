@@ -6,9 +6,9 @@ interface ButtonComponentProps {
 }
 
 export default function ButtonComponent({ title , bgColor }: ButtonComponentProps) {
-    const color = '#5A6268'
+    const color = bgColor === 'white'? 'black':'white'
     return (
-        <Box sx={{ '& button': { p: 1, fontSize: 12, fontWeight: 'bold' , background: bgColor? bgColor : 'primary'} }}>
+        <Box sx={{ '& button': { p: 1, fontSize: 12, fontWeight: 'bold' , background: bgColor? bgColor : 'primary',color: color} }}>
             <Button size="small" variant={'contained'}>
                 {title}
             </Button>

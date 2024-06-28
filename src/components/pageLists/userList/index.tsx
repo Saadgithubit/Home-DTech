@@ -41,6 +41,7 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
             </div>
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default'}}>
                 <table className='w-full'>
+                    <tbody>
             <tr className="border-b-2 text-xs font-semibold">
                 <th className='text-left p-4'>Name</th>
                 <th className='text-left py-4'>User Name</th>
@@ -74,6 +75,7 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
                     </tr>
                 )
             })}
+            </tbody>
             </table>
             </Box>
             <div className="pt-4">
