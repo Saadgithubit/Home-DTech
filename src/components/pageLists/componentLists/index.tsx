@@ -8,10 +8,10 @@ interface ComponentListProps {
 interface ListItem {
     name: string
 }
-const ComponentList: React.FC<ComponentListProps> = ({ list}) => {
-return(
-    <div>Building List</div>
-)
+const ComponentList: React.FC<ComponentListProps> = ({ list }) => {
+    return (
+        <div>Building List</div>
+    )
 }
 
 export default ComponentList;

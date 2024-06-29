@@ -3,7 +3,7 @@ import ButtonComponent from "../button";
 
 export default function FilterSection() {
     return (
-        <div className="flex flex-col bg-[#F8F9FA] rounded-md p-3 my-2 border-2">
+        <div className="flex flex-col bg-white rounded-md p-3 my-2 border-2">
             <Box
                 component="form"
                 sx={{ '& > :not(style)': { mb: 1, width: '100%' }, display: 'flex', flexDirection: 'row' }}

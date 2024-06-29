@@ -39,44 +39,44 @@ const UserList: React.FC<UserListProps> = ({ list, itemsPerPage = 5 }) => {
             <div className="pb-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
             </div>
-            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default'}}>
+            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default' }} className='rounded-md'>
                 <table className='w-full'>
                     <tbody>
-            <tr className="border-b-2 text-xs font-semibold">
-                <th className='text-left p-4'>Name</th>
-                <th className='text-left py-4'>User Name</th>
-                <th className='text-left py-4'>Email</th>
-                <th className='text-left py-4'>Role</th>
-                <th className='text-left py-4'>Account ID</th>
-                <th className='text-left py-4'>Status</th>
-                <th>Actions</th>
-            </tr>
-            {displayedList.map((item, index) => {
-                const { name, userName, email, role } = item
-                return (
-                    <tr key={index} className="border-b-2 text-xs">
-                        <td className='p-4'>{name}</td>
-                        <td className='py-4'>{userName}</td>
-                        <td className='py-4'>{email}</td>
-                        <td className='py-4'>{role}</td>
-                        <td className='py-4'></td>
-                        <td className='p-4'><span className="inline-block w-3 h-3 rounded-full bg-[#28A745]"></span></td>
-                        <td className='text-center py-4'>
-                            <span className='inline-flex'>
-                            <button className="p-2 rounded-s rounded-e text-white bg-[#0069D9]">
-                                <CreateIcon />
-                            </button>
-                            <div className='pl-1' />
-                            <button className="p-2 rounded-s rounded-e text-white bg-[#C82333]">
-                                <DeleteIcon />
-                            </button>
-                            </span>
-                        </td>
-                    </tr>
-                )
-            })}
-            </tbody>
-            </table>
+                        <tr className="border-b-2 text-xs font-semibold">
+                            <th className='text-left p-4'>Name</th>
+                            <th className='text-left py-4'>User Name</th>
+                            <th className='text-left py-4'>Email</th>
+                            <th className='text-left py-4'>Role</th>
+                            <th className='text-left py-4'>Account ID</th>
+                            <th className='text-left py-4'>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        {displayedList.map((item, index) => {
+                            const { name, userName, email, role } = item
+                            return (
+                                <tr key={index} className="border-b-2 text-xs">
+                                    <td className='p-4'>{name}</td>
+                                    <td className='py-4'>{userName}</td>
+                                    <td className='py-4'>{email}</td>
+                                    <td className='py-4'>{role}</td>
+                                    <td className='py-4'></td>
+                                    <td className='p-4'><span className="inline-block w-3 h-3 rounded-full bg-[#28A745]"></span></td>
+                                    <td className='text-center py-4'>
+                                        <span className='inline-flex'>
+                                            <button className="p-2 rounded-s rounded-e text-white bg-[#0069D9]">
+                                                <CreateIcon />
+                                            </button>
+                                            <div className='pl-1' />
+                                            <button className="p-2 rounded-s rounded-e text-white bg-[#C82333]">
+                                                <DeleteIcon />
+                                            </button>
+                                        </span>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
             </Box>
             <div className="pt-4">
                 <Pagination count={totalPages} page={currentPage} onChange={handlePageChange} />
