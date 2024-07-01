@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export default function AddUser() {
     const [showPassword, setShowPassword] = useState(false);
+    const [confshowPassword, setconfShowPassword] = useState(false);
     const [roles, setroles] = useState<string>()
     const [status, setstatus] = useState<string>()
 
@@ -80,7 +81,6 @@ export default function AddUser() {
                         }
 
                     />
-
                 </FormControl>
                 <FormControl sx={{ width: '24%', gap: '10px' }}>
                     <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-xs font-bold text-slate-700">
@@ -88,13 +88,13 @@ export default function AddUser() {
                     </span>
                     <OutlinedInput
                         size="small"
-                        type={showPassword ? 'text' : 'password'}
+                        type={confshowPassword ? 'text' : 'password'}
                         placeholder="Confirm Password"
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton
                                     aria-label="toggle password visibility"
-                                    onClick={() => setShowPassword(!showPassword)}
+                                    onClick={() => setconfShowPassword(!confshowPassword)}
                                     edge="end"
                                 >
                                     {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -107,7 +107,7 @@ export default function AddUser() {
             </Box>
             <span className="flex shadow-lg space-x-2 p-4">
                 <ButtonComponent title={'Create'} />
-                <Box sx={{ '& button': { px: 2.5, py: 1, fontSize: 12, fontWeight: 'bold', background: '#5A6268' } }}>
+                <Box sx={{ '& button': { px: 2.5, py: 1, fontSize: 12, fontWeight: 'bold', background: '#5A6268' }, '& button:hover': { background: '#343A40' } }}>
                     <Button size="small" variant={'contained'}>
                         Cancel
                     </Button>
