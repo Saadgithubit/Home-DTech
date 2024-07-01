@@ -13,7 +13,7 @@ export default function AddUser() {
     return (
         <div className="p-4">
             <h1 className="text-3xl my-4 font-sans mt-2">Users</h1>
-            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
+            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, display: 'flex', flexWrap: 'wrap', gap: '15px', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}>
                 <FormControl sx={{ width: '24%', gap: '10px' }}>
                     <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-xs font-bold text-slate-700">
                         Name:
@@ -105,7 +105,7 @@ export default function AddUser() {
                     />
                 </FormControl>
             </Box>
-            <span className="flex shadow-lg space-x-2 p-4">
+            <span className="flex shadow-lg rounded-bl-lg rounded-br-lg space-x-2 p-4">
                 <ButtonComponent title={'Create'} />
                 <Box sx={{ '& button': { px: 2.5, py: 1, fontSize: 12, fontWeight: 'bold', background: '#5A6268' }, '& button:hover': { background: '#343A40' } }}>
                     <Button size="small" variant={'contained'}>
