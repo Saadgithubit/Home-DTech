@@ -19,8 +19,8 @@ export default function Building() {
     ]
 
     return (
-        <div>
-            <span className="flex p-2 text-xl items-center justify-between">
+        <div className="p-2">
+            <span className="flex text-xl items-center justify-between">
                 <h1>Buildings</h1>
                 <ButtonComponent title={'Add Building'} />
             </span>

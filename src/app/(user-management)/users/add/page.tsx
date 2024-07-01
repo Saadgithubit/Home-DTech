@@ -8,7 +8,7 @@ export default function AddUser() {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-        <div>
+        <div className="p-2">
             <h1 className="text-3xl font-sans mt-2">Users</h1>
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
                 <FormControl sx={{ width: '24%', gap: '10px' }}>
@@ -36,7 +36,7 @@ export default function AddUser() {
                     <OutlinedInput size="small" type="email" placeholder="Email" />
                 </FormControl>
                 <FormControl sx={{ width: '24%', gap: '10px' }}>
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-xs font-bold text-slate-700">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-xs font-bold text-slate-700">
                         Roles:
                     </span>
                     <Select size='small' value='Select'>
@@ -46,7 +46,7 @@ export default function AddUser() {
                     </Select>
                 </FormControl>
                 <FormControl sx={{ width: '24%', gap: '10px' }}>
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-xs font-bold text-slate-700">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-xs font-bold text-slate-700">
                         Status:
                     </span>
                     <Select size='small' value='Select'>

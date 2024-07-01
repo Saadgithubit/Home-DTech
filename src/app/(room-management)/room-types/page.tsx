@@ -6,16 +6,16 @@ import React from 'react'
 
 export default function RoomTypes() {
     return (
-        <div>
-        <span className="w-full inline-flex p-2 text-xl items-center justify-between">
-            <h1>Rooms Type</h1>
-            <ButtonComponent title={'Add Room Type'} />
-        </span>
-        <NavContainer/>
-        <InnerHeader title={'Rooms Type List'}/>
-        <Box
+        <div className="p-2">
+            <span className="w-full inline-flex text-xl items-center justify-between">
+                <h1>Rooms Type</h1>
+                <ButtonComponent title={'Add Room Type'} />
+            </span>
+            <NavContainer />
+            <InnerHeader title={'Rooms Type List'} />
+            <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2,  }}
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}
             >
                 <Typography paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

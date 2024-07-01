@@ -19,7 +19,7 @@ export default function Roles() {
         { id: 12, name: 'Accounts', },
     ]
     return (
-        <div>
+        <div className="p-2">
             <span className="w-full inline-flex py-2 text-xl items-center justify-between">
                 <h1 className="font-san">Role Management</h1>
                 <Link href={'roles/add'}>

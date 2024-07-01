@@ -8,8 +8,8 @@ export default function Components() {
     const list = [{ name: 'abc' }]
 
     return (
-        <div>
-            <span className="w-full inline-flex p-2 text-xl items-center justify-between">
+        <div className="p-2">
+            <span className="w-full inline-flex text-xl items-center justify-between">
                 <h1>Components</h1>
                 <ButtonComponent title={'Add Product Component'} />
             </span>

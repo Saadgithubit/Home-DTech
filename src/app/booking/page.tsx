@@ -9,8 +9,8 @@ export default function Booking() {
     const list = [{ name: 'abc' }]
 
     return (
-        <div>
-            <span className="flex p-2 text-xl items-center justify-between">
+        <div className="p-2">
+            <span className="flex text-xl items-center justify-between">
                 <h1>Booking</h1>
                 <ButtonComponent title={'Add Booking'} />
             </span>

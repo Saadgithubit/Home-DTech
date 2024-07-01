@@ -1,8 +1,8 @@
-import { Box, TextField,} from "@mui/material";
+import { Box, TextField, } from "@mui/material";
 import DisplayedList from "@/components/dispayedRoleList";
 
 export default function AddRoles() {
-    
+
     const roleList = [
         {
             name: 'Amc-Quotation',
@@ -139,7 +139,7 @@ export default function AddRoles() {
     ]
 
     return (
-        <div className="p-2 ">
+        <div className="p-2">
             <h1 className="text-2xl my-4">Roles</h1>
             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}>
                 <div className="flex-col space-y-2">

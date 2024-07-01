@@ -28,7 +28,7 @@ export default function Users() {
     ]
 
     return (
-        <div className={inter.className}>
+        <div className="p-2">
             <span className="flex py-2 text-xl items-center justify-between">
                 <h1 className='font-medium'>Users</h1>
                 <Link href={'/users/add'}>

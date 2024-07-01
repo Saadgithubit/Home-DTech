@@ -5,16 +5,16 @@ import { Box, Typography } from '@mui/material'
 
 export default function Rooms() {
     return (
-        <div>
-        <span className="w-full inline-flex p-2 text-xl items-center justify-between">
-            <h1>Rooms</h1>
-            <ButtonComponent title={'Add Rooms'} />
-        </span>
-        <NavContainer/>
-        <InnerHeader title={'Rooms List'}/>
-        <Box
+        <div className="p-2">
+            <span className="w-full inline-flex text-xl items-center justify-between">
+                <h1>Rooms</h1>
+                <ButtonComponent title={'Add Rooms'} />
+            </span>
+            <NavContainer />
+            <InnerHeader title={'Rooms List'} />
+            <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2,  }}
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2 }}
             >
                 <Typography paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
