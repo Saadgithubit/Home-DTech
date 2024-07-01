@@ -6,6 +6,8 @@ import { DrawerProvider } from "@/contextApi";
 import Sidebar from "@/components/sidebar";
 import Footer from "@/components/footer";
 import AppBar from "@/components/appbar";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +29,7 @@ export default function RootLayout({
             <Sidebar />
             <AppBar />
             <div className="w-full mt-14 p-4">
-              {children}
+              <Suspense fallback={<Loading />}>{children}</Suspense>
             </div>
           </div>
           {/* <Footer /> */}
