@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import { DrawerProvider } from "@/contextApi";
 import Sidebar from "@/components/sidebar";
-import Footer from "@/components/footer";
+// import Footer from "@/components/footer";
 import AppBar from "@/components/appbar";
 import { Suspense } from "react";
 import Loading from "./loading";
@@ -24,16 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ backgroundColor: '#F4F6F9' }} className={inter.className}>
-        <DrawerProvider>
-          <div className="flex">
-            <Sidebar />
-            <AppBar />
-            <div className="w-full mt-14 p-4">
-              <Suspense fallback={<Loading />}>{children}</Suspense>
+        <div className="flex pt-16">
+          <Sidebar />
+          <AppBar />
+          <Suspense fallback={<Loading />}>
+            <div className="w-full">
+              {children}
             </div>
-          </div>
-          {/* <Footer /> */}
-        </DrawerProvider>
+          </Suspense>
+        </div>
+        {/* <Footer /> */}
       </body>
     </html>
   );
