@@ -2,8 +2,29 @@ import ButtonComponent from '@/components/button'
 import InnerHeader from '@/components/innerheader'
 import NavContainer from '@/components/filtersection'
 import { Box, Typography } from '@mui/material'
+import RoomsNameList from '@/components/pageLists/roomManagement/roomNames'
 
 export default function RoomNames() {
+    const roomsNameList = [
+        { status: 'Active', name: 'Admin', },
+        { status: 'Active', name: 'User/Landlords', },
+        { status: 'Active', name: 'Supplier', },
+        { status: 'Active', name: 'Engineer', },
+        { status: 'Active', name: 'User/Region Manager', },
+        { status: 'Active', name: 'Owner Association', },
+        { status: 'Active', name: 'Tenants', },
+        { status: 'Active', name: 'Test Admin Role', },
+        { status: 'Active', name: 'Test Admin Role 02', },
+        { status: 'Active', name: 'Engineering Director', },
+        { status: 'Active', name: 'Operations', },
+        { status: 'Active', name: 'Accounts', },
+        { status: 'Active', name: 'Accounts', },
+        { status: 'Active', name: 'Accounts', },
+        { status: 'Active', name: 'Accounts', },
+        { status: 'Active', name: 'Accounts', },
+        { status: 'Active', name: 'Accounts', },
+        { status: 'Active', name: 'Accounts', },
+    ]
     return (
         <div className="p-2">
             <span className="w-full inline-flex text-xl items-center justify-between">
@@ -14,22 +35,9 @@ export default function RoomNames() {
             <InnerHeader title={'Rooms Name List'} />
             <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, my: 4, borderRadius: '10px' }}
             >
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
+                <RoomsNameList roomsNamesList={roomsNameList} />
             </Box>
         </div>
     )

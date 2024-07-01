@@ -3,8 +3,20 @@ import InnerHeader from '@/components/innerheader'
 import NavContainer from '@/components/filtersection'
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import RoomsTypeList from '@/components/pageLists/roomManagement/roomType'
 
 export default function RoomTypes() {
+    const roomsNameList = [
+        { name: 'Admin', },
+        { name: 'User/Landlords', },
+        { name: 'Supplier', },
+        { name: 'Engineer', },
+        { name: 'User/Region Manager', },
+        { name: 'Owner Association', },
+        { name: 'Tenants', },
+        { name: 'Test Admin Role', },
+        { name: 'Test Admin Role 02', },
+    ]
     return (
         <div className="p-2">
             <span className="w-full inline-flex text-xl items-center justify-between">
@@ -15,22 +27,9 @@ export default function RoomTypes() {
             <InnerHeader title={'Rooms Type List'} />
             <Box
                 component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, }}
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2, my: 4, borderRadius: '10px' }}
             >
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
+                <RoomsTypeList RoomsTypeList={roomsNameList} />
             </Box>
         </div>
     )

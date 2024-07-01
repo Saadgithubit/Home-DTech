@@ -1,9 +1,45 @@
 import ButtonComponent from '@/components/button'
 import InnerHeader from '@/components/innerheader'
 import NavContainer from '@/components/filtersection'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
+import RoomsList from '@/components/pageLists/roomManagement/room'
 
 export default function Rooms() {
+    const roomsList = [
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+        { image: 'https://www.shutterstock.com/image-photo/driveway-view-stone-facade-house-600nw-2207752337.jpg', building: 'Damion Lock', name: 'House 2 of Damion', occupant: 'House 2 of Damion', width: 12, length: 25, height: 12, area: 0, },
+    ]
     return (
         <div className="p-2">
             <span className="w-full inline-flex text-xl items-center justify-between">
@@ -16,20 +52,7 @@ export default function Rooms() {
                 component="main"
                 sx={{ flexGrow: 1, bgcolor: 'background.default', p: 2 }}
             >
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
+                <RoomsList roomsList={roomsList} />
             </Box>
         </div>
     )
