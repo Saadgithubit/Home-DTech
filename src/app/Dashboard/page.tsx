@@ -1,4 +1,10 @@
+import TabsComponent from "@/components/TabsComponent";
+
 export default function Dashboard() {
+    const tabs = [
+        { label: 'Residential', content: <div>Content for Residential</div>, badgeContent: 4 },
+        { label: 'Commercial', content: <div>Content for Commercial</div>, badgeContent: 5 },
+    ];
 
     return (
         <div className="p-2">
@@ -7,8 +13,7 @@ export default function Dashboard() {
                 <div></div>
             </span>
             <span className="w-full border-b-2 flex space-x-4 my-8 text-xs">
-                <p style={{ color: '#0083FF' }} className="border-b-4 w-24 text-center border-[#0083FF] pb-1">RESIDENTIAL</p>
-                <p style={{ color: '#0083FF' }} className="border-b-4 w-24 text-center border-[#0083FF] pb-1">COMMERCIAL</p>
+                <TabsComponent tabs={tabs} />
             </span>
         </div>
     )
